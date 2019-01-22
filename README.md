@@ -1,6 +1,7 @@
 # Vue.Js Study
 * Vue.JS를 스터디하는 레파지토리 입니다.
-* 1월 ~ 
+* 1월
+
 <p align="center">
 <img src="./images/memoApp.png" width="800" >
 </p>
