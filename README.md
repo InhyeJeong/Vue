@@ -3,11 +3,10 @@
 * 1월 ~ 
 
 <br>
-
 # 1. binding
 * 단방향 data binding
 * 양방향 data binding
-
+<br>
 # 2. directive
 ## (1) v-if / v-show
 ## (2) v-for
@@ -17,7 +16,7 @@
 * keydown
 ## (4) v-bind
 * 동적으로 바꾸기
-
+<br>
 # 3. memoApp
 ## (1) localStorage기능으로 저장
 * data 추가
