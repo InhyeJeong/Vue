@@ -7,7 +7,9 @@
 # 1. binding
 * 단방향 data binding
 * 양방향 data binding
-
+<p align="center">
+<img src="./images/list.PNG" width="500" >	
+</p>
 <br>
 
 # 2. directive
