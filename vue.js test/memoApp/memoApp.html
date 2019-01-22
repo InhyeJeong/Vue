@@ -12,22 +12,33 @@
     <body>
 
         <div id="app" class="app">
-            <div class="head"> 메모 앱 </div>
+            <div class="head"> 
+                <span class="title">메모 앱</span>
+                <!-- 목록으로 돌아가는 기능 -->
+                <span class="list-btn" v-if="mode !== 'list'" v-on:click="mode = 'list'">&lt;</span>
+            </div>
             <div class="body">
+                <!-- 메모의 리스트 출력 -->
                 <div class="list" v-if="mode === 'list'">
                     <ul>
-                        <li v-for="m in memos">{{m.content}}</li>
+                        <!-- 리스트의 각 항목 클릭시, 자신의 id값으로 상세내용을 출력 -->
+                        <li v-for="m in memos" v-on:click="open(m.id)">{{m.content}}</li>
                     </ul>
                 </div>
+                <!-- + 버튼 을 누르면 나오는 secondDepth(textarea) / 저장 & 취소 버튼-->
                 <div class="write" v-else>
+                <!-- <div v-else="mode ==='write'"> -->
                     <textarea v-model="memo.content"></textarea>
-                    <button class="save-btn" type="button" v-on:click="save()">저장</button>
-                    <button class="cancle-btn" type="button" v-on:click="cancle()">취소</button>
+                    <!-- save버튼 클릭시 class에 full추가 됨-->
+                    <button class="save-btn" type="button" v-on:click="save()" v-bind:class="{'full' : mode==='write'}">
+                        저장
+                    </button>
+                    <button class="remove-btn" type="button" v-on:click="remove()" v-if="mode==='edit'">삭제</button>
                 </div>
+                <!-- firstDepth에서만 +버튼이 출력되도록 mode === list 설정 -->
                 <button class="add-btn" type="button" v-on:click="write()" v-if="mode==='list'"> + </button>
             </div>
-            <!-- <div v-else="mode ==='write'"> -->
-            
+           
         </div>
         <script src="vue.js"></script>
         <script src="app.js"></script>
