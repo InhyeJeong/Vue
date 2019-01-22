@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <title>메모 앱</title>
+        <meta charset="utf-8">
+        <!-- 모바일의 형태이기 때문에 viewport -->
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <!-- normalize -->
+        <link href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" rel="stylesheet">
+        <link href="app.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <div id="app" class="app">
+            <div class="head"> 메모 앱 </div>
+            <div class="body">
+                <ul>
+                    <li v-for="m in memos">{{m.content}}</li>
+                </ul>
+                <button class="add-btn" type="button"> + </button>
+            </div>
+        </div>
+        <script src="vue.js"></script>
+        <script src="app.js"></script>
+
+    </body>
+</html>
