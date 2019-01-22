@@ -1,16 +1,15 @@
 # Vue.Js Study
 * Vue.JS를 스터디하는 레파지토리 입니다.
 * 1월 ~ 
+<p align="center">
+<img src="./images/memoApp.png" width="800" >
+</p>
 
 <br>
 
 # 1. binding
 * 단방향 data binding
 * 양방향 data binding
-<p align="center">
-<img src="./images/memoApp.png" width="800" >
-</p>
-
 
 <br>
 
