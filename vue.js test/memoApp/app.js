@@ -1,6 +1,12 @@
 var app = new Vue({
     el: '#app',
     data: {
+        mode : 'list',
+        memo: {
+            id:null,
+            content: null,
+            regDate: null
+        },
         memos: [
             {
                 id:1,
@@ -19,5 +25,24 @@ var app = new Vue({
             }
 
         ]
+    },
+    methods: {
+        write: function(){
+            this.mode = 'write';
+        },
+        save: function(){
+            var id = this.memos.length +1;
+            //저장 클릭시 내용 push
+            this.memos.push({
+                id : 4,
+                content : this.memo.content,
+                regDate : new Date()
+            });
+            this.memo.content = null;
+            this.mode = 'list';
+        },
+        cancle: function(){
+            this.mode = 'list';
+        }
     }
 })
