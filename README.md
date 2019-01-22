@@ -8,9 +8,8 @@
 * 단방향 data binding
 * 양방향 data binding
 
-<img src="./images/list.PNG" width="200" >
-<img src="./images/create.PNG" width="200" >
-<img src="./images/edit.PNG" width="200" >	
+<img src="./images/memoApp.png" width="200" >
+
 
 
 
