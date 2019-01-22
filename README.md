@@ -7,10 +7,9 @@
 # 1. binding
 * 단방향 data binding
 * 양방향 data binding
-
-<img src="./images/memoApp.png" width="200" >
-
-
+<p align="center">
+<img src="./images/memoApp.png" width="600" >
+</p>
 
 
 <br>
