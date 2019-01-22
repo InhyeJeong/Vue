@@ -1,6 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
+        //  상태값을 구분하기 위한 mode data
         mode : 'list',
         memo: {
             id:null,
@@ -49,13 +50,12 @@ var app = new Vue({
                 for(var i in this.memos ) {
                    if( this.memos[i].id === this.memo.id) {
                         //this.memo[i].content = this.memo.content
-                        this.memo[i] = this.renew(this.memo);
+                        this.memos[i] = this.renew(this.memo);
                         break;
                    }
                 }
             }
             
-
             this.mode = 'list';
             //  console에서 JSON형태로 파일 들어오는 것을 확인할 수 있음
             localStorage.setItem('memos', JSON.stringify(this.memos));
