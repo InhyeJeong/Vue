@@ -8,7 +8,7 @@
 * 단방향 data binding
 * 양방향 data binding
 <p align="center">
-<img src="./images/memoApp.png" width="600" >
+<img src="./images/memoApp.png" width="1000" >
 </p>
 
 
