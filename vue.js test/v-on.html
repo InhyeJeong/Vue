@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+        <div id="app">
+
+
+            <!-- v-on: 대신에 @도 사용 가능 -->
+            <h1 v-if="visible">나는 보입니다.</h1>
+            <button @click="visible = !visible">누르면 true>false 되며 위의 글씨 사라짐 버튼</button>
+            <hr>
+
+            <button @click="alert('버튼을 클릭했습니다.')">버튼</button>
+            <hr>
+            <button @dblclick="alert('더블 버튼을 클릭했습니다.')">더블클릭 버튼</button> 
+           
+            <!-- 배열받아서 출력 -->
+             <button @click="add()">개발자가 직접 정의한 메서드 실행</button>
+            <ul>
+                <li v-for="n in numbers">{{n}}</li>
+            </ul>
+            <!-- model에 추가하는 방식 /  enter클릭시 li태그에 추가됨 -->
+            <input type="text" v-model="animal" @keyup.enter="capture()">
+            <ul>
+                <li v-for="a in animals">{{ a }}</li>
+            </ul>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script>
+            //  v-on : 사용자가 action했을 때 실행하도록 도와주는 디렉티브
+            var app = new Vue({
+                    el: '#app',
+                    data : {
+                      visible : true,
+                      numbers: [1,2,3,4,5],
+                      //    초기화
+                      animal: null,
+                      animals: ['lion', 'tiger', 'dog', 'cat', 'eagle']
+
+                    },
+                    methods:{
+                        //  버튼 클릭하면 숫자가 하나 더 늘어나는 로직
+                        add: function() {
+                            var lastNum = this.numbers [this.numbers.length - 1];
+                            //  마자막 숫자에 +1하고
+                            lastNum += 1;
+                            //  배열에 추가
+                            this.numbers.push(lastNum);
+                        },
+                        remove: function() {
+
+                        },
+                        //  li태그에 추가하는 함수
+                        capture: function() {
+                            if(this.animal) {
+                                this.animals.push(this.animal);
+                                this.animal = null; //  input에 썼던 값을 초기화 해주기
+                            }
+                        }
+                    }
+            });
+        </script>
+    </body>
+</html>
