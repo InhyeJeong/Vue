@@ -10,7 +10,7 @@ var app = new Vue({
         memos: []
     },
     methods: {
-        //  입력받은 값을 다른 객체에 넣어줄 때, 참조값x, just 값으로 넣어주기 때문에 renew메서드 필요
+        //  입력받은 값을 다른 객체or변수에 넣어줄 때, 참조값x, just 값으로 넣어주기 때문에 renew메서드 필요
         renew: function(val){
             return JSON.parse(JSON.stringify(val));
         },
@@ -22,8 +22,8 @@ var app = new Vue({
                     this.memo = this.renew(this.memos[i]);   
                     break;
                 }
-                this.mode = 'edit';
             }
+            this.mode = 'edit'; 
         },
         write: function(){
             this.mode = 'write';
@@ -48,7 +48,7 @@ var app = new Vue({
             else if(this.mode ==='edit') {  //  edit이면
                 for(var i in this.memos ) {
                    if( this.memos[i].id === this.memo.id) {
-                        //this.memo[i].content = this.memo.id.content
+                        //this.memo[i].content = this.memo.content
                         this.memo[i] = this.renew(this.memo);
                         break;
                    }
