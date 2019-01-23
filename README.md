@@ -14,10 +14,11 @@
 ## (1) v-if / v-show
 ## (2) v-for
 ## (3) v-on
-* keyup.enter
-* keypress
-* keydown
-## (4) v-bind
+* :click or @
+* :keyup.enter
+* :keypress
+* :keydown
+## (4) v-bind or :
 * 동적으로 바꾸기
 
 <br>
