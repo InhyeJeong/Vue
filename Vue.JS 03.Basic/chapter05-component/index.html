@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <body>
+            <div id="app">
+                <div class="container mx-auto m-10">
+                    <div class="flex">
+                        <product>
+
+                        </product>
+                </div>
+                </div>
+            </div>
+            <!-- development version, includes helpful console warnings -->
+            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+            <script>
+                //  첫번째 prop :태그명, 두번째 : JSON형식으로 설정값 넘김
+                Vue.component('product', {
+                    props: ['image', 'title', 'description', 'avatar'],
+                    //  상품을 표현할 html tag
+                    template : ``
+                })
+                let app = new Vue({
+
+                    el: '#app',
+                    data(){
+                        return {
+                         
+                        };
+                    }
+                })
+            </script>
+        </body>
+    </head>
+</html>
