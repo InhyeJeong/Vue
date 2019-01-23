@@ -22,8 +22,8 @@
 
 ## chapter03 : attr binding
 
-* tag attr 앞에 v-bind: or : 사용함
-* **Stirng / Class**의 경우 **배열**로 관리 가능
+* tag attr 앞에 **v-bind:** or **:** 사용함
+* **String / Class**의 경우 **배열**로 관리 가능
 * **style**은 JSON key에 **style항목**, value에 **설정 값**
 * **Class**는 JSON key에 **적용할 클래스 명**, value에 **t/f로 클래스 사용 여부** 정의
 
@@ -37,13 +37,18 @@
 * 다양한 태그를 모아 1개의 custom tag를 만드는 기능
 
 ## chapter06 : Todo List App
+
 <p align="center">
   <img src="./images/plan.PNG" width="300" >
   <img src="./images/success.PNG" width="300" >
   <img src="./images/all.PNG" width="300" >
 </p>
+
 * vue-cli 사용 기본방법
 * directive 복습
-* computed : 클래스의 getter와 같은 동작
+* **computed** : 클래스의 getter와 같은 동작
 * component 분리방법 : vue 파일 생성 / import(lowercase 필수)
-* component에서 $emit 사용하여 event 발생
+
+  자세한 내용은 [todo.vue](./Vue.JS 03.Basic/chapter06-Todo List App/todo/src/components/todo.vue) 에 있습니다.
+  
+* component에서 **$emit** 사용하여 event 발생
