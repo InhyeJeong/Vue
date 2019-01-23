@@ -26,3 +26,8 @@
 * **Stirng / Class**의 경우 **배열**로 관리 가능
 * **style**은 JSON key에 **style항목**, value에 **설정 값**
 * **Class**는 JSON key에 **적용할 클래스 명**, value에 **t/f로 클래스 사용 여부** 정의
+
+## chapter04 : 메소드 선언 및 event handling
+
+* 메소드 정의 : 내부에서 사용할 함수는 methods **JSON 객체에 만들어 선언**
+* 이벤트 처리 : 기존 사용 event를 받아올 때는 @click="**메소드**"
