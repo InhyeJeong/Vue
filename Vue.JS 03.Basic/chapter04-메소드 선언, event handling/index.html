@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    </head>
+        <body>
+            <div id="app">
+                <button type="button" v-on:click="add">더하기</button>
+            </div>
+            <!-- development version, includes helpful console warnings -->
+            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+            <script>
+                let app = new Vue({
+                    el: '#app',
+                    data(){
+                        return {
+                         counter:0
+                        };
+                    },
+                    //  메서드 선언 :JSON객체 or 클래스 등에 '속해있는 함수'
+                    //  안에서는 => 함수 사용 불가능
+                    methods: {
+                        add() {
+                            console.log(this.counter);
+                        }
+                    }
+                });
+            </script>
+        </body>
+   
+</html>
