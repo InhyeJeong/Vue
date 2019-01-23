@@ -37,11 +37,13 @@
 * 다양한 태그를 모아 1개의 custom tag를 만드는 기능
 
 ## chapter06 : Todo List App
+
 <p align="center">
   <img src="./images/plan.PNG" width="300" >
   <img src="./images/success.PNG" width="300" >
   <img src="./images/all.PNG" width="300" >
 </p>
+
 * vue-cli 사용 기본방법
 * directive 복습
 * computed : 클래스의 getter와 같은 동작
