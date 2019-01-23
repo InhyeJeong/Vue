@@ -46,6 +46,6 @@
 
 * vue-cli 사용 기본방법
 * directive 복습
-* computed : 클래스의 getter와 같은 동작
+* **computed** : 클래스의 getter와 같은 동작
 * component 분리방법 : vue 파일 생성 / import(lowercase 필수)
-* component에서 $emit 사용하여 event 발생
+* component에서 **$emit** 사용하여 event 발생
