@@ -52,3 +52,5 @@
   자세한 내용은 [todo.vue](./Vue.JS-03.Basic/chapter06-TodoListApp/todo/src/components/todo.vue) 에 있습니다.
   
 * component에서 **$emit** 사용하여 event 발생
+
+  자세한 내용은 [todo.vue](./Vue.JS-03.Basic/chapter06-TodoListApp/todo/src/components/todo.vue) 에 있습니다.
