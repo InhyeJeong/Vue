@@ -49,6 +49,6 @@
 * **computed** : 클래스의 getter와 같은 동작
 * component 분리방법 : vue 파일 생성 / import(lowercase 필수)
 
-  자세한 내용은 [todo.vue](./chapter06-Todo List App/todo/src/components/todo.vue)에 있습니다.
+  자세한 내용은 [todo.vue](./chapter06-Todo List App/todo/src/components/todo.vue) 에 있습니다.
   
 * component에서 **$emit** 사용하여 event 발생
