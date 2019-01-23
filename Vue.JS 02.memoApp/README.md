@@ -7,6 +7,7 @@
 <img src="./Vue.Js-Study/images/memoApp.png" width="800" >
 </p>
 
+
 ## (1) data 추가
 * localStorage기능으로 저장
 * content null 처리 (textarea에 이전에 입력한 값 남아있지 않도록)
