@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <body>
+            <div id="app">
+                <ul style="list-style : none;">
+                    <template v-for="i in items">
+                        <li>
+                            <img :src="i.image">
+                        </li>
+                        <li>
+                            {{ i.title }}
+                        </li>
+                    </template>
+                    
+                </ul>
+            </div>
+            <!-- development version, includes helpful console warnings -->
+            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+            <script>
+                //  Vue 인스턴스를 변수에 담으면, 인스턴스 내부에 접근할 수 있다. (list 동적으로 받기 위해)
+                let app = new Vue({
+                   // app이라는 이름을 가지는 id에 마운트 시킨다.
+                    el: '#app',
+                    data(){
+                        return {
+                           items: [
+                               {
+                                   id:1,
+                                   image : 'https://picsum.photos/210/118/?image=1',
+                                   title : '컴퓨터'
+                               },
+                               {
+                                   id : 2,
+                                   image : 'https://picsum.photos/210/118/?image=2',
+                                   title : '해변'
+                               },
+                               {
+                                   id:3,
+                                   image: 'https://picsum.photos/210/118/?image=3',
+                                   title : '핸드폰'
+                               },
+                               {
+                                   id:4,
+                                   image: 'https://picsum.photos/210/118/?image=4',
+                                   title : '화이팅'
+                               }
+                           ]
+                        };
+                    }
+                })
+            </script>
+        </body>
+    </head>
+</html>
