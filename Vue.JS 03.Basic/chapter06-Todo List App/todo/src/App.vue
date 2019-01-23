@@ -8,10 +8,11 @@
         <div class="list-group mb-4">
           <!-- for문 -->
           <template v-for="todo in activeTodoList" > <!-- 필터 : state값이 active인 값만 넘겨줌 -->
-            <!-- state변경을 위한 함수 연결 -->
-            <button class="list-group-item text-left" @click="toggleTodoState(todo)">
-              {{ todo.label }}
-            </button>
+            <!-- 출력할 label and 컴포넌트 내부에서 발생시킨 이벤트를 받아 toggle~메서드 실행 -->
+            <todo
+              :label="todo.label"
+              @componentClick="toggleTodoState(todo)"
+            />
           </template>
         </div>
 
@@ -26,6 +27,7 @@
 </template>
 
 <script>
+  import todo from './components/todo';
 
 export default {
   name: 'app',
@@ -69,7 +71,7 @@ export default {
     }
   },
   components: {
-
+    todo
   }
 }
 </script>
