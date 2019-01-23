@@ -4,7 +4,7 @@
 # memoApp
 
 <p align="center">
-<img src="./images/memoApp.png" width="800" >
+<img src="./Vue.Js-Study/images/memoApp.png" width="800" >
 </p>
 
 ## (1) data 추가
