@@ -2,6 +2,7 @@
 
 
 # Vue.JS를 사용한 memoApp
+* 기간 : 1월 22일
 
 <p align="center">
 <img src="./images/memoApp.png" width="800" >
