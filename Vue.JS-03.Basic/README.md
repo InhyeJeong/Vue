@@ -48,8 +48,8 @@
 * directive 복습
 * **computed** : 클래스의 getter와 같은 동작
 * component 분리방법 : vue 파일 생성 / import(lowercase 필수)
-
-  자세한 내용은 [todo.vue](./Vue.JS-03.Basic/chapter06-TodoListApp/todo/src/components/todo.vue) 에 있습니다.
+Vue.Js-Study/Vue.JS-03.Basic/chapter06-TodoListApp/todo/src/components/todo.vue
+  자세한 내용은 [todo.vue](./blob/master/Vue.JS-03.Basic/chapter06-TodoListApp/todo/src/components/todo.vue) 에 있습니다.
   
 * component에서 **$emit** 사용하여 event 발생
 
