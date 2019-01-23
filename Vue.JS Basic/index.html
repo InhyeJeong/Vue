@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <body>
+            <div id="app">
+                <input type="text" id="user_id" v-model="userId">
+                <input type="password" id="user_password" v-model="userPassword">
+                <button type="button">로그인</button>
+                <br>
+                아이디 :  {{ userId }}
+                <br>
+                비밀번호 : {{ userPassword }}
+            </div>
+            <!-- development version, includes helpful console warnings -->
+            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+            <script>
+                new Vue({
+                   // app이라는 이름을 가지는 id에 마운트 시킨다.
+                    el: '#app',
+                    data(){
+                        return {
+                            userId :'',
+                            userPassword : ''
+                        }
+                    }
+                })
+            </script>
+        </body>
+    </head>
+</html>
