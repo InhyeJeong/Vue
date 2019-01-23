@@ -4,7 +4,7 @@
 # memoApp
 
 <p align="center">
-<img src="./Vue.Js-Study/images/memoApp.png" width="800" >
+<img src="./images/memoApp.png" width="800" >
 </p>
 
 
