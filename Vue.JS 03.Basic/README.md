@@ -1,6 +1,6 @@
 # VueJS Basic
 
-## chapter01
+## chapter01 : data binding
 
 * input tag에 JS data binding
 
@@ -14,8 +14,15 @@
 
   (2) 화면출력은 {{ 변수 }}
 
-## chapter02
+## chapter02 : list
 
 * 반복 태그에 **v-for**라는 attr 사용
 * 반복 태그 안에서는 자유롭게 변수사용 가능
 * 2개 이상의 **tag가 반복사용**시 > **template**으로 감싼다.
+
+## chapter03 : attr binding
+
+* tag attr 앞에 v-bind: or : 사용함
+* **Stirng / Class**의 경우 **배열**로 관리 가능
+* **style**은 JSON key에 **style항목**, value에 **설정 값**
+* **Class**는 JSON key에 **적용할 클래스 명**, value에 **t/f로 클래스 사용 여부** 정의
