@@ -7,6 +7,8 @@
         <body>
             <div id="app">
                 <button type="button" v-on:click="add">더하기</button>
+                {{counter}}
+                <input type="text" @keyup.enter="keyUp">
             </div>
             <!-- development version, includes helpful console warnings -->
             <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -22,7 +24,14 @@
                     //  안에서는 => 함수 사용 불가능
                     methods: {
                         add() {
-                            console.log(this.counter);
+                            this.counter++;
+                        },
+                        keyUp(ev) {
+                            if(ev.keyCode !== 13) {
+                                console.log('엔터키 아님');
+                                return;
+                            }
+                            console.log('엔터키 눌림');
                         }
                     }
                 });
