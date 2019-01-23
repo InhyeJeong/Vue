@@ -31,3 +31,7 @@
 
 * 메소드 정의 : 내부에서 사용할 함수는 methods **JSON 객체에 만들어 선언**
 * 이벤트 처리 : 기존 사용 event를 받아올 때는 @click="**메소드**"
+
+## chapter05 : component
+
+* 다양한 태그를 모아 1개의 custom tag를 만드는 기능
