@@ -12,7 +12,7 @@
         }
         /* dropdown 메뉴에 on이라는 클래스 추가시 ul 태그 display none으로 바꿔 화면에 출력  */
         .dropdown.on ul {
-            display: none;
+            display: block;
         }
         </style>
 
@@ -22,7 +22,7 @@
                 <div :style="[style, fontStyle]"> <!-- 배열로 여러개 받을 수 있음 -->
                     테스트용 DIV
                 </div>
-                <div class="[dropdown, toggle]"> <!-- dropdown 적용시키고 상황마다 toggle의 on클래스 추가하도록 -->
+                <div :class="[dropdown, toggle]"> <!-- dropdown 적용시키고 상황마다 toggle의 on클래스 추가하도록 -->
                     <ul>
                         <li><a href="#">메뉴1</a> </li>
                         <li><a href="#">메뉴2</a> </li>
