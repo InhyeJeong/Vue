@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="ko">
     <head>
+        <style>
+        .dropdown ul {
+            display: none;
+            list-style: none;
+            margin: 0;
+            border: 1px solid black;
+            padding: 10px;
+            width : 200px;
+        }
+        /* dropdown 메뉴에 on이라는 클래스 추가시 ul 태그 display none으로 바꿔 화면에 출력  */
+        .dropdown.on ul {
+            display: none;
+        }
+        </style>
+
         <body>
             <div id="app">
                 <!-- <img :id="`thumbnail_${id}`" v-bind:src="image"> -->
                 <div :style="[style, fontStyle]"> <!-- 배열로 여러개 받을 수 있음 -->
                     테스트용 DIV
                 </div>
-                <div class="dropdown">
-                    테스트용 DIV
+                <div class="[dropdown, toggle]"> <!-- dropdown 적용시키고 상황마다 toggle의 on클래스 추가하도록 -->
+                    <ul>
+                        <li><a href="#">메뉴1</a> </li>
+                        <li><a href="#">메뉴2</a> </li>
+                    </ul>
                 </div>
             </div>
             <!-- development version, includes helpful console warnings -->
@@ -29,8 +47,9 @@
                             },
                             //  클래스를 JSON형식으로 받을 때는 -> 클래스명 : 적용여부 
                             //  콘솔에서 나옴
-                            dropdown : {
-                                dropdown : true
+                            dropdown : 'dropdown',  //  객체 형식
+                            toggle: {   // JSON형식
+                                on: false
                             }
                         };
                     }
