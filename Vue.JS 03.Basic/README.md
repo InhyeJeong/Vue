@@ -22,7 +22,7 @@
 
 ## chapter03 : attr binding
 
-* tag attr 앞에 v-bind: or : 사용함
+* tag attr 앞에 **v-bind:** or **:** 사용함
 * **Stirng / Class**의 경우 **배열**로 관리 가능
 * **style**은 JSON key에 **style항목**, value에 **설정 값**
 * **Class**는 JSON key에 **적용할 클래스 명**, value에 **t/f로 클래스 사용 여부** 정의
