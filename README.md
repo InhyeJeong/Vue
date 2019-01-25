@@ -19,13 +19,42 @@
   {{index}} : {{key}} : {{value}}
 </li>
  ```
-## (3) v-on
+## (3) v-on (이벤트 리스너를 엘리먼트에 붙힘)
+* 4가지 이벤트 한정자
+  1) .prevent
+  2) .stop
+  3) .capture
+  4) .self
 * :click or @
-* :keyup.enter
+* :keyup.enter = :keyup.13
 * :keypress
 * :keydown
 ## (4) v-bind or :
 * 동적으로 바꾸기
+
+## (5) v-model
+* v-model.number (사용자가 입력하는 것을 숫자로 저장)
+```vue
+<body>
+  <div class="container">
+    a={{ a }}, b={{ b }}
+    <input v-model.numbr="a">
+    <pre> {{data}} </pre>
+  </div>
+</body>
+```
+## 3. methods
+```vue
+<script>
+export default {
+//  메서드 객체 아래 메서드 정의
+  methods: {
+    clickEvent: function() {
+    //  메서드 내 this는 Vue 인스턴스를 가리킴
+    this.data++;
+    }
+  }
+```
 
 <br>
 
