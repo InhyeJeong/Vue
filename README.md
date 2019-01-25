@@ -113,7 +113,7 @@ export default {
   1) compareFunction(a, b) = 0보다 작으면, a를 b보다 낮은 인덱스로 정렬
   2) compareFunction(a, b) = 0이면, a와 b의 위치를 변경하지 않습니다.
   3) compareFunction(a, b) = 0보다 크면, b를 a보다 낮은 인덱스로 정렬
-  
+    
 * 사용자 정의 필터 적용
 * 유틸리티 라이브러리 활용
 
