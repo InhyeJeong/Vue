@@ -115,8 +115,17 @@ export default {
   3) compareFunction(a, b) = 0보다 크면, b를 a보다 낮은 인덱스로 정렬
     
 * 사용자 정의 필터 적용
-* 유틸리티 라이브러리 활용
-
+* 유틸리티 라이브러리 활용 : CDN을 통해 html 파일에 추가
+  1) [Lodash](https://lodash.com/)
+  2) [Underscore](http://underscorejs.org/)
+  3) [sugar](https://sugarjs.com/)
+```
+//  문법
+//  첫번째prop : 정렬할 배열
+//  두번째prop : 정렬 기준이 될 키의 배열
+//  세번째prop : 각 키의 순서로 구성된 배열
+_.orderBy(collection, [iteratees=[_.identity]], [orders])
+```
 <br>
 
 
