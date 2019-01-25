@@ -119,7 +119,7 @@ export default {
   1) [Lodash](https://lodash.com/)
   2) [Underscore](http://underscorejs.org/)
   3) [sugar](https://sugarjs.com/)
-```
+```javascript
 //  문법
 //  첫번째prop : 정렬할 배열
 //  두번째prop : 정렬 기준이 될 키의 배열
