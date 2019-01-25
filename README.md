@@ -56,7 +56,66 @@ export default {
     this.data++;
     }
   }
+};
+</script>
 ```
+## 4. computed
+* 계산된 프로퍼티
+* 뷰의 인라인 표현은 편하지만 로직이 복잡해지면 computed를 사용해야함
+* computed properties란 다른 요인에 따라 값이 바뀌는 변수. 객체 프로퍼티로 사용할 수 있는 함수처럼 동작.
+```vue
+<script>
+export default {
+   computed: {
+    showList() {
+    //  this는 Vue의 인스턴스
+      return this.models;
+    }
+  }
+};
+</script>
+```
+
+## 5.filter
+
+* 배열의 항목 필터링
+```vue
+<script>
+export default {
+  methods: {
+  //  작가에 따라 이야기를 필터링하는 메서드
+    storiesBy: function (writer) {
+      return this.stories.filter(function (story) {
+        return story.writer === writer
+      }
+  }
+};
+</script>
+```
+* 배열의 항목 정렬
+```vue
+<script>
+export default {
+   computed: {
+    orderedStories: function () {
+    //  JS 내장함수 sort사용
+    //  배열의 요소를 정렬
+      return this.stories.sort(function(a, b){
+      //  배열을 반환
+        return a.upvotes - b.upvotes;
+      })
+    }
+  }
+};
+</script>
+```
+
+  1) compareFunction(a, b) = 0보다 작으면, a를 b보다 낮은 인덱스로 정렬
+  2) compareFunction(a, b) = 0이면, a와 b의 위치를 변경하지 않습니다.
+  3) compareFunction(a, b) = 0보다 크면, b를 a보다 낮은 인덱스로 정렬
+  
+* 사용자 정의 필터 적용
+* 유틸리티 라이브러리 활용
 
 <br>
 
