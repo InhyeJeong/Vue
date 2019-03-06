@@ -128,4 +128,8 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 ```
 <br>
 
+## 6. LifeCycle
+<p align="center">
+<img src="./images/lifecycle.png" width="500" >	
+</p>
 
