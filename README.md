@@ -27,6 +27,15 @@
   2) .stop
   3) .capture
   4) .self
+ ```vue
+ <!-- prevent를 이용한 제출버튼 -->
+ <button type="submit" @click="calculate">Calculate</button>
+ ```
+ ```vue
+  <!-- submit 이벤트는 더는 페이지를 새로고침하지 않습니다. -->
+ <button type="submit" @click.prevent="calculate">Calculate</button>
+ ```
+  
 * :click or @
 * :keyup.enter = :keyup.13
 * :keypress
