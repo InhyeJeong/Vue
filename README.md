@@ -57,7 +57,7 @@ enter, tab, delete, esc, space, up, down, left, right
   </div>
 </body>
 ```
-## 3. methods
+# 3. methods
 ```vue
 <script>
 export default {
@@ -71,7 +71,7 @@ export default {
 };
 </script>
 ```
-## 4. computed
+# 4. computed
 * 계산된 프로퍼티
 * 뷰의 인라인 표현은 편하지만 로직이 복잡해지면 computed를 사용해야함
 * computed properties란 다른 요인에 따라 값이 바뀌는 변수. 객체 프로퍼티로 사용할 수 있는 함수처럼 동작.
@@ -110,7 +110,7 @@ export default {
 
 
 
-## 5.filter
+# 5.filter
 
 * 배열의 항목 필터링
 ```vue
@@ -162,7 +162,7 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 ```
 <br>
 
-## 6. LifeCycle
+# 6. LifeCycle
 
 ### (1) Creation : 컴포넌트 초기화
 * **before create** : data, events 세팅 전
