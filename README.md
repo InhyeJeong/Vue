@@ -162,7 +162,7 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 ```
 <br>
 
-# 6. LifeCycle
+# 6. LifeCycle : 라이프 사이클에서는 => 함수 사용 X
 
 ### (1) Creation : 컴포넌트 초기화 (이벤트와 생명주기 메소드가 쵝화, 메소드 및 데이터 옵션을 주입(바인딩)하고 반응형으로 설정)
 * **before create** : data, events 세팅 전
