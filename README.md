@@ -142,11 +142,11 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 
 ## 6. LifeCycle
 
-### Creation : 컴포넌트 초기화
+### (1) Creation : 컴포넌트 초기화
 * beforee create : data, events 세팅 전
 * created : data, events 활성화( template, 가상돔 -> mount, rendering X )
 
-### Mounting : 돔(DOM) 삽입단계
+### (2) Mounting : 돔(DOM) 삽입단계
 * before Mount : template, 렌더함수가 **렌더링**된 후 첫 렌더링 직전에 실행 ( 비권장, server-side-rendering시 호출 X )
 * Mounted : component, template, 렌더링된 DOM 접근 가능 (모든 하위 component가 마운팅 상태 보장은 X, s-s-r 호출 X )
 
@@ -154,11 +154,11 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 <img src="./images/p-c.png" width="500" >	
 </p>
 
-### Updating : Diff. 재렌더링 단계
+### (3) Updating : Diff. 재렌더링 단계
 * before Update : 돔 재렌더링 -> Before0Update -> 패치 ( 재렌더링 전의 새 상태의 data 얻을 수 O )
 * updated : 돔이 업데이트된 상태, 돔 종속 연산 가능
 
-### Destruction : 해제 단계
+### (4) Destruction : 해제 단계
 * before Destroy : 뷰인스턴스 제거 **직전**에 호출됨
 * destroyed :  뷰인스턴스 제거 **후** 호출 됨
 
