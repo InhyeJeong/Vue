@@ -190,3 +190,7 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 
 ### life-cycle Hooks Tutorial
 https://www.youtube.com/watch?v=8rn3SK4N8Go
+
+<p align="center">
+<img src="./images/hook.png" width="500" >	
+</p>
