@@ -27,15 +27,27 @@
   2) .stop
   3) .capture
   4) .self
+ ```vue
+ <!-- prevent를 이용한 제출버튼 -->
+ <button type="submit" @click="calculate">Calculate</button>
+ ```
+ ```vue
+  <!-- submit 이벤트는 더는 페이지를 새로고침하지 않습니다. -->
+ <button type="submit" @click.prevent="calculate">Calculate</button>
+ ```
 * :click or @
-* :keyup.enter = :keyup.13
+* 키 한정자 :keyup.enter = :keyup.13
+```
+enter, tab, delete, esc, space, up, down, left, right
+```
+*
 * :keypress
 * :keydown
 ## (4) v-bind or :
 * 동적으로 바꾸기
 
 ## (5) v-model
-* v-model.number (사용자가 입력하는 것을 숫자로 저장)
+* **v-model.number** (사용자가 입력하는 것을 숫자로 저장)
 ```vue
 <body>
   <div class="container">
@@ -128,4 +140,29 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 ```
 <br>
 
+## 6. LifeCycle
+
+### Creation : 컴포넌트 초기화
+* beforee create : data, events 세팅 전
+* created : data, events 활성화( template, 가상돔 -> mount, rendering X )
+
+### Mounting : 돔(DOM) 삽입단계
+* before Mount : template, 렌더함수가 **렌더링**된 후 첫 렌더링 직전에 실행 ( 비권장, server-side-rendering시 호출 X )
+* Mounted : component, template, 렌더링된 DOM 접근 가능 (모든 하위 component가 마운팅 상태 보장은 X, s-s-r 호출 X )
+
+<p align="center">
+<img src="./images/p-c.png" width="500" >	
+</p>
+
+### Updating : Diff. 재렌더링 단계
+* before Update : 돔 재렌더링 -> Before0Update -> 패치 ( 재렌더링 전의 새 상태의 data 얻을 수 O )
+* updated : 돔이 업데이트된 상태, 돔 종속 연산 가능
+
+### Destruction : 해제 단계
+* before Destroy : 뷰인스턴스 제거 **직전**에 호출됨
+* destroyed :  뷰인스턴스 제거 **후** 호출 됨
+
+<p align="center">
+<img src="./images/lifecycle.png" width="500" >	
+</p>
 
