@@ -75,6 +75,7 @@ export default {
 * 계산된 프로퍼티
 * 뷰의 인라인 표현은 편하지만 로직이 복잡해지면 computed를 사용해야함
 * computed properties란 다른 요인에 따라 값이 바뀌는 변수. 객체 프로퍼티로 사용할 수 있는 함수처럼 동작.
+* 예를 들면, **연산량이 많거나 data를 유지해야할 때** 사용하면 좋음
 ```vue
 <script>
 export default {
