@@ -35,16 +35,19 @@
   <!-- submit 이벤트는 더는 페이지를 새로고침하지 않습니다. -->
  <button type="submit" @click.prevent="calculate">Calculate</button>
  ```
-  
 * :click or @
-* :keyup.enter = :keyup.13
+* 키 한정자 :keyup.enter = :keyup.13
+```
+enter, tab, delete, esc, space, up, down, left, right
+```
+*
 * :keypress
 * :keydown
 ## (4) v-bind or :
 * 동적으로 바꾸기
 
 ## (5) v-model
-* v-model.number (사용자가 입력하는 것을 숫자로 저장)
+* **v-model.number** (사용자가 입력하는 것을 숫자로 저장)
 ```vue
 <body>
   <div class="container">
