@@ -49,7 +49,7 @@ enter, tab, delete, esc, space, up, down, left, right
 * :keypress
 * :keydown
 ## (4) v-bind or :
-* 동적으로 바꾸기
+* 하나 이상의 **속성 또는 컴포넌트 프로퍼티**를 표현식에 **동적으로 바인딩**하는데 사용(동적으로 바꾸기)
 
 ```vue
 <!-- 전체 문법 -->
