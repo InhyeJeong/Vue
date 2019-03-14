@@ -37,14 +37,27 @@
  ```
 * :click or @
 * 키 한정자 :keyup.enter = :keyup.13
-```
+```vue
 enter, tab, delete, esc, space, up, down, left, right
+-------------------
+<!-- 전체 문법 -->
+<a v-on:click="doSomething"> ... </a>
+
+<!-- 약어 -->
+<a @click="doSomething"> ... </a>
 ```
-*
 * :keypress
 * :keydown
 ## (4) v-bind or :
 * 동적으로 바꾸기
+
+```vue
+<!-- 전체 문법 -->
+<a v-bind:href="url"> ... </a>
+
+<!-- 약어 -->
+<a :href="url"> ... </a>
+```
 
 ## (5) v-model
 * **v-model.number** (사용자가 입력하는 것을 숫자로 저장)
