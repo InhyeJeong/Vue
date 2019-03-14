@@ -37,14 +37,27 @@
  ```
 * :click or @
 * 키 한정자 :keyup.enter = :keyup.13
-```
+```vue
 enter, tab, delete, esc, space, up, down, left, right
+-------------------
+<!-- 전체 문법 -->
+<a v-on:click="doSomething"> ... </a>
+
+<!-- 약어 -->
+<a @click="doSomething"> ... </a>
 ```
-*
 * :keypress
 * :keydown
 ## (4) v-bind or :
-* 동적으로 바꾸기
+* 하나 이상의 **속성 또는 컴포넌트 프로퍼티**를 표현식에 **동적으로 바인딩**하는데 사용(동적으로 바꾸기)
+
+```vue
+<!-- 전체 문법 -->
+<a v-bind:href="url"> ... </a>
+
+<!-- 약어 -->
+<a :href="url"> ... </a>
+```
 
 ## (5) v-model
 * **v-model.number** (사용자가 입력하는 것을 숫자로 저장)
@@ -162,13 +175,13 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 ```
 <br>
 
-# 6. LifeCycle
+# 6. LifeCycle : 라이프 사이클에서는 => 함수 사용 X
 
-### (1) Creation : 컴포넌트 초기화
+### (1) Creation : 컴포넌트 초기화 (이벤트와 생명주기 메소드가 쵝화, 메소드 및 데이터 옵션을 주입(바인딩)하고 반응형으로 설정)
 * **before create** : data, events 세팅 전
 * **created** : data, events 활성화( template, 가상돔 -> mount, rendering X )
 
-### (2) Mounting : 돔(DOM) 삽입단계
+### (2) Mounting : 돔(DOM) 삽입단계 (템플릿을 읽어와 문법을 적용하고 화면에 렌더링)
 * **before Mount** : template, 렌더함수가 **렌더링**된 후 첫 렌더링 직전에 실행 ( 비권장, server-side-rendering시 호출 X )
 * **Mounted** : component, template, 렌더링된 DOM 접근 가능 (모든 하위 component가 마운팅 상태 보장은 X, s-s-r 호출 X )
 
@@ -176,11 +189,11 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 <img src="./images/p-c.png" width="500" >	
 </p>
 
-### (3) Updating : Diff. 재렌더링 단계
+### (3) Updating : Diff. 재렌더링 단계 (데이터 속성의 변화를 감지하면 화면을 다시 렌더링)
 * **before Update** : 돔 재렌더링 -> Before0Update -> 패치 ( 재렌더링 전의 새 상태의 data 얻을 수 O )
 * **updated** : 돔이 업데이트된 상태, 돔 종속 연산 가능
 
-### (4) Destruction : 해제 단계
+### (4) Destruction : 해제 단계 (데이터의 반응 해제 및 이벤트를 삭제하고 인스턴스를 )
 * **before Destroy** : 뷰인스턴스 제거 **직전**에 호출됨
 * **destroyed** :  뷰인스턴스 제거 **후** 호출 됨
 
@@ -189,9 +202,9 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 </p>
 
 ### life-cycle Hooks Tutorial
-https://www.youtube.com/watch?v=8rn3SK4N8Go
-
-https://www.youtube.com/watch?v=XWMiHKD-hrg
+* https://www.youtube.com/watch?v=8rn3SK4N8Go
+* https://www.youtube.com/watch?v=ZxAtIf5GkYM
+* https://www.youtube.com/watch?v=XWMiHKD-hrg
 
 <p align="center">
 <img src="./images/hook.png" width="1000" >	
