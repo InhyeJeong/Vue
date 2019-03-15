@@ -11,7 +11,7 @@
         <div class="container">
         <h1>Where would like to go?</h1>
         <ul class="list-group">
-            <planet v-for="(planet, index) in planets" :key="index" :planet="planet"></planet>
+            <planet_c v-for="(planeta, index) in planets" :key="index" :inside="planeta"></planet_c>
         </ul>
         </div>
     </div>
@@ -19,29 +19,29 @@
 
     <template id="planet-template">
         <li  class="list-group-item">
-            Planet: {{ planet.name }}
-            Visited {{ planet.visits }} time(s).
+            Planet: {{ inside.name }}
+            Visited {{ inside.visits }} time(s).
             <button v-if="canBeVisited" @click="visit" class="btn btn-default">
                 Visit
             </button>
-            <span v-if="planet.visits > 0" class="fa fa-rocket fa-2x pull-right" aria-hidden="true"></span>
+            <span v-if="inside.visits > 0" class="fa fa-rocket fa-2x pull-right" aria-hidden="true"></span>
         </li>
     </template>
     
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
 <script type="text/javascript">
-Vue.component('planet', {
+Vue.component('planet_c', {
     template: '#planet-template',
-    props: ['planet'],
+    props: ['inside'],
     methods: {
         visit: function () {
-            this.planet.visits++;
+            this.inside.visits++;
         },
     },
     computed: {
         canBeVisited: function () {
-            return this.planet.visits < 3
+            return this.inside.visits < 3
         }
     }
 });
