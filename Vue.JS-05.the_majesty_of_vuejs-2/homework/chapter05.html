@@ -1,0 +1,67 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>The Elections</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>People of Vue</h1>
+        <ul class="list-group">
+            <li v-for="(candidate, index) in candidates" :key="index" class="list-group-item">
+                Mr. {{candidate.name}} {{candidate.vote}}
+                <button class="btn btn-brown" @click="candidate.vote++">Vote</button>
+            </li>
+        </ul>
+        <input @keyup.delete="clear" class="form-control" placeholder="press 'delete' to reset">
+        <h2>Our mayor is {{mayor.name}}!</h2>
+        <pre>{{$data}}</pre>
+        <pre>{{mayor}}</pre>
+    </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '.container',
+        data: {
+            candidates: [
+                {
+                    name: 'Black',
+                    vote: 140
+                },
+                {
+                    name: 'Pink',
+                    vote: 145
+                },
+                {
+                    name: 'White',
+                    vote: 135
+                },
+                {
+                    name: 'Brown',
+                    vote: 130
+                },   
+            ]
+        },
+        computed: {
+            mayor : function () {
+                var candidatesSorted = this.candidates.sort(function(a, b) {
+                    return b.vote - a.vote;
+                });
+                return candidatesSorted[0];
+            }
+        },
+        methods: {
+            clear: function () {
+                this.candidates = this.candidates.map(function(candidate) {
+                    candidate.vote = 0;
+                    return candidate;
+                })
+            }
+        },
+    })
+</script>
+
+
+</html>
