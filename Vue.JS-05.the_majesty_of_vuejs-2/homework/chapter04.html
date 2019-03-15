@@ -8,8 +8,10 @@
 <body>
     <div class="container">
         <h1>This is me!</h1>
-        <ul v-for="(value, key, index) in infos" class="list-group-item">
-            {{index}} : {{key}} = {{value}}
+        <ul class="list-group">
+            <li v-for="(value, key, index) in infos" class="list-group-item">
+                {{index}} : {{key}} = {{value}}
+            </li>
         </ul>
         <pre>{{$data}}</pre>
     </div>
