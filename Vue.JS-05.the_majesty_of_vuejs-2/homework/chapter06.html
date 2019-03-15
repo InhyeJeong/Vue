@@ -1,0 +1,61 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>People of Gaul</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>People of Gaul</h1>
+        <ul class="list-group">
+            <!--computed로 배열을 리턴하더라도 디렉티브안에서는 ()를 꼭 넣어줘야함-->
+            <li v-for="people in orderPeoples()" class="list-group-item" >
+                {{people.name}} {{people.age}}
+            </li>
+        </ul>
+
+        <h1>"Old" People of Gaul</h1>
+        <ul class="list-group">
+            <li v-for="person in old"class="list-group-item">
+                {{person.name}} {{person.age}}
+            </li>
+        </ul>
+        <pre>{{$data}}</pre>
+        <pre>{{typeof(orderPeoples)}}</pre>
+    </div>
+    
+</body>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '.container',
+        data: {
+            peoples : [
+                {name: 'ace', age: 20},
+                {name: 'juliet', age: 27},
+                {name: 'paul', age: 30},
+                {name: 'alex', age: 66},
+                {name: 'mac', age: 69}
+
+            ]
+        },
+        methods: {
+            orderPeoples : function() {
+                return this.peoples.sort(function(a, b) {
+                    //  peoples를 sort한 다음에 나머지 value값에 접근가능하다 !!!!
+                    return b.age - a.age;
+                });
+
+            }
+        },
+        computed: {
+            old : function() {
+                return this.peoples.filter(function (item) {
+                    return item.age > 65;
+            });
+            }
+        }
+    })
+</script>
+</html>
