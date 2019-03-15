@@ -1,0 +1,31 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <title>Planet Travels</title>
+</head>
+
+<body>
+<div class="container">
+    <div id="app">
+        <h1>Hello Mr.{{msg}}</h1>
+        Enter your Name:
+        <br>
+        <input type="text" v-model="msg">
+    </div>
+</div>
+</body>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            msg : ''
+        }
+    })
+</script>
+
+
+</html>
