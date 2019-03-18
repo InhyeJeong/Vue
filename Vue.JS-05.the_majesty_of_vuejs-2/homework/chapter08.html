@@ -10,19 +10,19 @@
     <div class="container">
         <h1>Chariot shopping</h1>
         <ul class="list-group">
-            <chariot v-for="(data, index) in carriages" :key="index" :inside="data"></chariot>
+            <chariot v-for="(chariot, index) in chariots" :key="index" :chariot="chariot" :current="current" @select="updateChariot"></chariot>
         </ul>
+        <pre>{{ $data }}</pre>
     </div>
 
 
-
+    <!-- component template -->
     <template id="chariot-template">
         <li class="list-group-item">
-            {{"inside.name"}} chariot {{inside.horses}} horse(s)!
-            <button type="button" class="btn btn-success"id="pick" style="float: right;" @click="clkBtn">Pick Chariot</button><br>
-            <button type="button" v-if="inside.horses === 2" class="btn btn-primary" id="riding" disabled="true">Riding !</button>
-            <button type="button" v-if="inside.horses > 2" class="btn btn-indigo" id="hire" disabled="true">Hire Horeses!</button>
-            <button type="button" v-if="2 > inside.horses" class="btn btn-danger" id="dismiss" disabled="true">Dismiss Horeses!</button>
+            <h4>"{{ chariot.name }}" chariot has <strong>{{ chariot.horses }}</strong> horse(s)!</h4>
+            <button @click="rideChariot(chariot)" class="btn btn-danger" :disabled="isCurrent">
+                {{ action }}
+            </button>
         </li>
     </template>
 </body>
@@ -31,31 +31,57 @@
 <script type="text/javascript">
 Vue.component('chariot', {
     template: '#chariot-template',
-    props:['inside'],
+    props:['chariot', 'current'],
     methods: {
-        clkBtn: function() {
-            if (this.inside.horses === 2) {
-                //  Riding버튼 활성화시키기
-               
-            } else if ( this.inside.horses > 2 ) {
-                //  Hire Horeses활성화
-            } else if (this.inside.horses < 2) {
-
-            }
+        rideChariot: function (chariot) {
+            this.$emit('select', chariot)
         }
-        
     },
-})
+    computed: {
+        //is true when the chariot has more horses than the current one
+        hasMoreHorses: function () {
+            return this.current.horses < this.chariot.horses
+        },
+        //is true when the chariot is the current one
+        isCurrent: function () {
+            return this.current.name === this.chariot.name
+        },
+        //is true when there is no chariot current
+        noChariot: function () {
+            return this.current.name === null;
+        },
+        //define the action for each chariot
+        action: function () {
+            var action;
+            if (this.noChariot) {
+                action = 'Pick Chariot'
+            } else if (this.isCurrent) {
+                action = 'Riding!'
+            } else if (this.hasMoreHorses) {
+                action = 'Hire Horses'
+            } else {
+                action = 'Dismiss Horses'
+            }
+            return action;
+        }
+    }
+});
 
-    new Vue({
+var vm = new Vue({
         el: '.container',
         data: {
-            carriages : [
+            chariots : [
                 {name: 'Olympus', horses: 4},
                 {name: 'Sagitta', horses: 3},
                 {name: 'Icarus', horses: 2},
                 {name: 'Abraxas', horses: 1}
-            ]
+            ],
+            current: {}
+        },
+        methods: {
+            updateChariot: function (chariot) {
+                this.current = chariot
+            }
         }
     })
 </script>
