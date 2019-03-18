@@ -231,7 +231,6 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
           }
       }
       :
- </script>
 ```
 
 * **$emit에서 설정한 'select'** 가 아래의 부모자식 태그 안에 **@select**로 들어감. 그 때, @select="내부함수"실행 시킴
