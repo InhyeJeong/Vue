@@ -1,0 +1,62 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <title>Horse-drawn-Charios</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Chariot shopping</h1>
+        <ul class="list-group">
+            <chariot v-for="(data, index) in carriages" :key="index" :inside="data"></chariot>
+        </ul>
+    </div>
+
+
+
+    <template id="chariot-template">
+        <li class="list-group-item">
+            {{"inside.name"}} chariot {{inside.horses}} horse(s)!
+            <button type="button" class="btn btn-success"id="pick" style="float: right;" @click="clkBtn">Pick Chariot</button><br>
+            <button type="button" v-if="inside.horses === 2" class="btn btn-primary" id="riding" disabled="true">Riding !</button>
+            <button type="button" v-if="inside.horses > 2" class="btn btn-indigo" id="hire" disabled="true">Hire Horeses!</button>
+            <button type="button" v-if="2 > inside.horses" class="btn btn-danger" id="dismiss" disabled="true">Dismiss Horeses!</button>
+        </li>
+    </template>
+</body>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+<script type="text/javascript">
+Vue.component('chariot', {
+    template: '#chariot-template',
+    props:['inside'],
+    methods: {
+        clkBtn: function() {
+            if (this.inside.horses === 2) {
+                //  Riding버튼 활성화시키기
+               
+            } else if ( this.inside.horses > 2 ) {
+                //  Hire Horeses활성화
+            } else if (this.inside.horses < 2) {
+
+            }
+        }
+        
+    },
+})
+
+    new Vue({
+        el: '.container',
+        data: {
+            carriages : [
+                {name: 'Olympus', horses: 4},
+                {name: 'Sagitta', horses: 3},
+                {name: 'Icarus', horses: 2},
+                {name: 'Abraxas', horses: 1}
+            ]
+        }
+    })
+</script>
+</html>
