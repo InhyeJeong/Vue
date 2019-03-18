@@ -219,7 +219,7 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 *  자식component에서 부모 component로 변경사항 **전달**
 
 ```vue
-<script type="text/javascript">
+<script>
   Vue.component('chariot', {
       template: '#chariot-template',
       //  부모와 자식 컴포넌트 통신
@@ -229,7 +229,7 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
               //  이벤트 이름 인자와 함께 리스너 콜백함수에 추가로 전달합니다(arrow함수)
               this.$emit('select', chariot)
           }
-      },
+      }
       :
  </script>
 ```
