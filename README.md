@@ -223,7 +223,7 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
   Vue.component('chariot', {
       template: '#chariot-template',
       //  부모와 자식 컴포넌트 통신
-      props:['chariot],
+      props:['chariot'],
       methods: {
           rideChariot: function (chariot) {
               //  이벤트 이름 인자와 함께 리스너 콜백함수에 추가로 전달합니다(arrow함수)
