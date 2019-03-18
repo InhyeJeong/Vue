@@ -209,3 +209,47 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 <p align="center">
 <img src="./images/hook.png" width="1000" >	
 </p>
+
+
+# 7. 사용자 정의 이벤트
+
+### $on(event)를 이용해 이벤트 **청취**
+
+### $emit(event)를 이용해 이벤트 발생
+*  자식component에서 부모 component로 변경사항 **전달**
+
+```vue
+<script type="text/javascript">
+  Vue.component('chariot', {
+      template: '#chariot-template',
+      //  부모와 자식 컴포넌트 통신
+      props:['chariot],
+      methods: {
+          rideChariot: function (chariot) {
+              //  이벤트 이름 인자와 함께 리스너 콜백함수에 추가로 전달합니다(arrow함수)
+              this.$emit('select', chariot)
+          }
+      },
+      :
+ </script>
+```
+
+* **$emit에서 설정한 'select'** 가 아래의 부모자식 태그 안에 **@select**로 들어감. 그 때, @select="내부함수"실행 시킴
+
+```vue
+<body>
+  <div class="container">
+      <h1>Chariot shopping</h1>
+      <ul class="list-group">
+          <chariot v-for="(chariot, index) in chariots" :key="index" :chariot="chariot" @select="updateChariot"></chariot>
+      </ul>
+      <pre>{{ $data }}</pre>
+  </div>
+```
+
+### $once(event)를 이용해 이벤트를 한 번만 청취
+
+### $off()를 이용해 이벤트 리스너를 제거
+
+### eventbus
+* 형제 component 통신에서 **가상의 부모 component 역할**
