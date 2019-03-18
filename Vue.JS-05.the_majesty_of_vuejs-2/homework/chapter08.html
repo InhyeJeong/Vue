@@ -1,3 +1,5 @@
+<!--props 설명 유튜브 주소 : https://www.youtube.com/watch?v=7T8F7ZF52lo&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG&index=6-->
+
 <html>
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -31,9 +33,11 @@
 <script type="text/javascript">
 Vue.component('chariot', {
     template: '#chariot-template',
+    //  부모와 자식 컴포넌트 간 currentChariot 속성을 동기화 해야함으로 current 추가
     props:['chariot', 'current'],
     methods: {
         rideChariot: function (chariot) {
+            //  이벤트 이름 인자와 함께 리스너 콜백함수에 추가로 전달합니다
             this.$emit('select', chariot)
         }
     },
@@ -53,13 +57,13 @@ Vue.component('chariot', {
         //define the action for each chariot
         action: function () {
             var action;
-            if (this.noChariot) {
+            if (this.noChariot) {   //  사용자가 어떤 마차를 선택하기 전
                 action = 'Pick Chariot'
-            } else if (this.isCurrent) {
+            } else if (this.isCurrent) {    //  마차가 선택된 마차인 경우(이 버튼은 비활성화 해야함)
                 action = 'Riding!'
-            } else if (this.hasMoreHorses) {
+            } else if (this.hasMoreHorses) {    //  마차가 선택된 말차보다 말이 많은 경우
                 action = 'Hire Horses'
-            } else {
+            } else {    //  마차가 선택된 마차보다 말이 적은 경우
                 action = 'Dismiss Horses'
             }
             return action;
@@ -68,21 +72,21 @@ Vue.component('chariot', {
 });
 
 var vm = new Vue({
-        el: '.container',
-        data: {
-            chariots : [
-                {name: 'Olympus', horses: 4},
-                {name: 'Sagitta', horses: 3},
-                {name: 'Icarus', horses: 2},
-                {name: 'Abraxas', horses: 1}
-            ],
-            current: {}
-        },
-        methods: {
-            updateChariot: function (chariot) {
-                this.current = chariot
-            }
+    el: '.container',
+    data: {
+        chariots : [
+            {name: 'Olympus', horses: 4},
+            {name: 'Sagitta', horses: 3},
+            {name: 'Icarus', horses: 2},
+            {name: 'Abraxas', horses: 1}
+        ],
+        current: {}
+    },
+    methods: {
+        updateChariot: function (chariot) {
+            this.current = chariot
         }
-    })
+    }
+})
 </script>
 </html>
