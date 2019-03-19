@@ -14,7 +14,7 @@ lights-server, JavaScript, VueJS, MVC -> MVVM pattern
 ### 1) export default : 하나의 .vue 파일이 하나의 독립적인 컴포넌트를 정의 한다
 * https://kr.vuejs.org/v2/guide/single-file-components.html
 
-### 2) Model(./Vue.Js-Study/Vue.JS-06.Inflean/mine/1-vanilla/js/models)
+### 2) [Model](./Vue.Js-Study/Vue.JS-06.Inflean/mine/1-vanilla/js/models)
 * HistroryModel.js
 * KeywordModel.js
 * SearchModel.js
