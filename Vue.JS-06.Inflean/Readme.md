@@ -18,9 +18,9 @@ lights-server, JavaScript, VueJS, MVC -> MVVM pattern
 * HistroryModel.js
 * KeywordModel.js
 * SearchModel.js
-### 3) View
+### 3) [View](./mine/1-vanilla/js/views)
 * FormView.js
 * ResultView.js
 * View.js
-### 4) Controller
+### 4) [Controller](./mine/1-vanilla/js/controllers)
 * MainControllers.js
