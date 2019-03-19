@@ -3,13 +3,24 @@
 
 ## 이 프로젝트의 tech stack
 ```vue
-lights-server, JavaScript, VueJS
+lights-server, JavaScript, VueJS, MVC -> MVVM pattern
 ```
 
-* 요구사항 분석
+## 요구사항 분석
 <p align="center">
 <img src="./images/first.png" width="600" >	
 </p>
 
-### export default : 하나의 .vue 파일이 하나의 독립적인 컴포넌트를 정의 한다
+### 1) export default : 하나의 .vue 파일이 하나의 독립적인 컴포넌트를 정의 한다
 * https://kr.vuejs.org/v2/guide/single-file-components.html
+
+### 2) Model(./Vue.Js-Study/Vue.JS-06.Inflean/mine/1-vanilla/js/models)
+* HistroryModel.js
+* KeywordModel.js
+* SearchModel.js
+### 3) View
+* FormView.js
+* ResultView.js
+* View.js
+### 4) Controller
+* MainControllers.js
