@@ -11,7 +11,8 @@ lights-server, JavaScript, VueJS, MVC -> MVVM pattern
 <img src="./images/first.png" width="600" >	
 </p>
 
-### 1) export default : 하나의 .vue 파일이 하나의 독립적인 컴포넌트를 정의 한다
+### 1) export default란?
+* 하나의 .vue 파일이 하나의 독립적인 컴포넌트를 정의 한다
 * https://kr.vuejs.org/v2/guide/single-file-components.html
 
 ### 2) [Model](./mine/1-vanilla/js/models)
