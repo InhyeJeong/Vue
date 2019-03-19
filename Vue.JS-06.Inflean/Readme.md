@@ -10,3 +10,6 @@ lights-server, JavaScript, VueJS
 <p align="center">
 <img src="./images/first.png" width="600" >	
 </p>
+
+### export default : 하나의 .vue 파일이 하나의 독립적인 컴포넌트를 정의 한다
+* https://kr.vuejs.org/v2/guide/single-file-components.html
