@@ -213,25 +213,24 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 
 # 7. 사용자 정의 이벤트
 
-### $on(event)를 이용해 이벤트 **청취**
+### 1) $on(event)를 이용해 이벤트 **청취**
 
-### $emit(event)를 이용해 이벤트 발생
+### 2) $emit(event)를 이용해 이벤트 발생
 *  자식component에서 부모 component로 변경사항 **전달**
 
 ```vue
-<script type="text/javascript">
+<script>
   Vue.component('chariot', {
       template: '#chariot-template',
       //  부모와 자식 컴포넌트 통신
-      props:['chariot],
+      props:['chariot'],
       methods: {
           rideChariot: function (chariot) {
               //  이벤트 이름 인자와 함께 리스너 콜백함수에 추가로 전달합니다(arrow함수)
               this.$emit('select', chariot)
           }
-      },
+      }
       :
- </script>
 ```
 
 * **$emit에서 설정한 'select'** 가 아래의 부모자식 태그 안에 **@select**로 들어감. 그 때, @select="내부함수"실행 시킴
@@ -247,9 +246,11 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
   </div>
 ```
 
-### $once(event)를 이용해 이벤트를 한 번만 청취
+### 3) $once(event)를 이용해 이벤트를 한 번만 청취
 
-### $off()를 이용해 이벤트 리스너를 제거
+### 4) $off()를 이용해 이벤트 리스너를 제거
 
-### eventbus
+### 5) eventbus
 * 형제 component 통신에서 **가상의 부모 component 역할**
+* eventbus 설명 유튜브 주소 : https://www.youtube.com/watch?v=tlcofmjZJEA&index=8&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG
+* props 설명 유튜브 주소 : https://www.youtube.com/watch?v=7T8F7ZF52lo&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG&index=6
