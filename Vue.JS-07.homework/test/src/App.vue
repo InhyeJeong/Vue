@@ -5,9 +5,10 @@
 
       <h1 class="title">Select</h1>
 
-      <select class="browser-default custom-select" v-bind="changeCategory" >
+      <!--select-->
+      <select class="browser-default custom-select" v-model="selected">
         <option selected >Open this select menu</option>
-        <option value="1" v-for="data in selectLists" :key="data">{{data.category}}</option>
+        <option v-for="data in selectLists" :key="data">{{data.category}}</option>
       </select>
       <br><br>
 
@@ -20,9 +21,20 @@
       <!--btn-->
       <button type="submit" class="btn btn-light-blue" @click="onClick">Submit</button>
       <br><br>
-
+      <hr>
       <!--result-->
       <h1 class="title">Result</h1>
+      <br>
+
+      <!--filter-->
+      <select class="browser-default custom-select" v-model="selectedResults">
+        <option selected >Open this select menu</option>
+        <option v-for="data in selectLists" :key="data">{{data.category}}</option>
+      </select>
+
+      <ul class="list-group">
+        <li v-for="data in textResults" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
+      </ul>
       <p>{{textResults}}</p>
     </div>
   </div>
@@ -39,14 +51,16 @@ export default {
         {category:'가족'}
       ],
       textResults:[],
-      userInput: ''
+      userInput: '',
+      selected: '',
+      selectedResults:''
     }
   },
   methods: {
     onClick: function() {
       this.textResults.push({
         label : this.userInput,
-        category : this.selectLists.category
+        category : this.selected
       })
       this.userInput = '';
     },
@@ -57,6 +71,9 @@ export default {
       return this.selectLists.filter(function(data) {
         return data.category === category
       })
+    },
+    selectedResult: function () {
+
     }
   }
 }
@@ -81,5 +98,9 @@ export default {
 .title { 
   font-weight: bold;
   font-size: 30px
+}
+
+.btn {
+  float: right;
 }
 </style>
