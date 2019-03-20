@@ -8,7 +8,9 @@
       <!--select-->
       <select class="browser-default custom-select" v-model="selected">
         <option selected >Open this select menu</option>
-        <option v-for="data in selectLists" :key="data">{{data.category}}</option>
+        <option v-for="data in selectLists"
+                :key="data">{{data.category}}
+        </option>
       </select>
       <br><br>
 
@@ -22,19 +24,27 @@
       <button type="submit" class="btn btn-light-blue" @click="onClick">Submit</button>
       <br><br>
       <hr>
-      <!--result-->
-      <h1 class="title">Result</h1>
+      <!--filter-->
+      <h1 class="title">Filter</h1>
       <br>
 
-      <!--filter-->
-      <select class="browser-default custom-select" v-model="selectedResults">
+      <select class="browser-default custom-select"
+              v-model="textResults"
+              @change="filterCategory">
         <option selected >Open this select menu</option>
-        <option v-for="data in selectLists" :key="data">{{data.category}}</option>
+        <option v-for="data in selectLists"
+                :key="data">{{data.category}}
+        </option>
       </select>
-
+      
+      <br><br>
+      <!--result-->
+      <h1 class="title">Result</h1>
+      
       <ul class="list-group">
         <li v-for="data in textResults" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
       </ul>
+
       <p>{{textResults}}</p>
     </div>
   </div>
@@ -64,11 +74,8 @@ export default {
       })
       this.userInput = '';
     },
-    changeCategory: function(category) {
-      this.selectLists.category = category
-    },
     filterCategory: function(category) {
-      return this.selectLists.filter(function(data) {
+      this.textResults.filter(function(data) {
         return data.category === category
       })
     },
