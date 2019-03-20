@@ -6,7 +6,7 @@ const KeywordView = Object.create(View)
 
 KeywordView.messages = {
     NO_KEYWORDS: '추천 검색어가 없습니다'
-  }
+}
 
 KeywordView.setup = function(el) {
     this.init(el)
