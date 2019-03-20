@@ -8,7 +8,7 @@ export default {
         console.log(tag, 'init()')
         //  index.html의 <form></form>태그 부분을 el로 넘겨줌
         FormView.setup(document.querySelector('form'))
-        //  emit으로 넘긴 이벤트 받음 
+        //  FormView에서 emit으로 넘긴 이벤트 받음 
             .on('@submit', e => this.onSubmit(e.detail.input))
             .on('@reset', e => this.onResetForm())
 
@@ -31,7 +31,9 @@ export default {
     },
 
     onResetForm() {
-        console.log(tag, 'onResetForm()');
+        console.log(tag, 'onResetForm()')
+        //  검색결과 숨김
+        ResultView.hide()
     },
 
     onSearchResult(data) {

@@ -18,6 +18,7 @@ FormView.showResetBtn = function (show = true) {
 }
 
 
+//  이벤트 바인딩
 FormView.bindEvents = function() {
     this.on('submit', e => e.preventDefault())
     this.inputEl.addEventListener('keyup', e => this.onKeyup(e))
@@ -31,13 +32,13 @@ FormView.onKeyup = function(e) {
     //  지웠을 때도 reset 전달
     if(!this.inputEl.value.length) this.emit('@reset')
     if(e.keyCode !== enter) return
-    //  전달
+    //  Controller에게 전달
     this.emit('@submit', {input: this.inputEl.value})
 }
 
 FormView.onClickReset = function () {
-    //  x버튼 클릭시 reset 전달
+    //  x버튼 클릭시 reset Controller에게 전달
     this.emit('@reset')
-    this.showResetBtn(false)
+    this.showResetBtn(false)    //  리셋 버튼 숨김
 }
 export default FormView
