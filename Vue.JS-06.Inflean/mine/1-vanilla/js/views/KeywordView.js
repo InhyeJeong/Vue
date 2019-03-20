@@ -15,6 +15,7 @@ KeywordView.setup = function(el) {
 
 KeywordView.render = function(data=[]) {
     this.el.innerHTML = data.length ? this.getKeywordHtml(data) : this.messages.NO_KEYWORDS
+    this.bindClickEvent()
     this.show()
 }
 
@@ -26,6 +27,18 @@ KeywordView.getKeywordHtml = function (data) {
         </li>`
         return html
     }, '<ul class="list">') + '</ul>'
+}
+
+KeywordView.bindClickEvent = function() {
+    //  배열이 아니므로 유사배열 사용
+    Array.from(this.el.querySelectorAll('li')).forEach(li => {
+        li.addEventListener('click', e => this.onClickKeyword(e))
+    })
+}
+
+KeywordView.onClickKeyword = function (e) {
+    const {keyword} = e.currentTarget.dataset
+    this.emit('@click', {keyword})
 }
 
 export default KeywordView
