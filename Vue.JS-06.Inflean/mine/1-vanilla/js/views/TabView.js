@@ -11,8 +11,10 @@ TabView.tabNames = {
 
 TabView.setup = function (el) {
     this.init(el)
+    this.bindClick()
     return this
 }
+
 //  탭메뉴 active하는 함수
 TabView.setActiveTab = function (tabName) {
     Array.from(this.el.children).forEach(li => {
@@ -21,4 +23,15 @@ TabView.setActiveTab = function (tabName) {
     this.show()
 }
 
+TabView.bindClick = function () {
+    Array.from(this.el.children).forEach(li => {
+        li.addEventListener('click', e => this.onClick(li.innerHTML))   //  tabName을 넘겨줌
+    })
+}
+
+//  탭 클릭
+TabView.onClick = function (tabName) {
+    this.setActiveTab(tabName)
+    this.emit('@change', {tabName})
+}
 export default TabView
