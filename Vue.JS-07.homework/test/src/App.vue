@@ -45,10 +45,11 @@
       <ul v-else class="list-group">
         <li v-for="data in textFilterResults" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
       </ul>
+      <div id="dv" ref="dv"></div>
       <br><br>
       
       
-      
+      <!--console-->
       <p>{{textFilterResults}}</p>
       {{$data}}
 
@@ -80,19 +81,16 @@ export default {
         category : this.selected
       })
       this.userInput = '';
+      filterCategory()
     },
     filterCategory: function() {
       var self = this
-      this.textFilterResults = this.textResults.filter(function(data) {
-          return data.category === self.filterSelected
-          
+      self.$nextTick(()=> {
+        this.textFilterResults = this.textResults.filter(function(data) {
+            return data.category === self.filterSelected
+        })
       })
-
-      
     },
-  },
-  created() {
-    
   }
 }
 </script>
