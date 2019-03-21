@@ -7,7 +7,7 @@
 
       <!--select-->
       <select class="browser-default custom-select" v-model="selected">
-        <option selected >Open this select menu</option>
+        <option selected disabled  >Open this select menu</option>
         <option v-for="data in selectLists"
                 :key="data">{{data.category}}
         </option>
@@ -37,12 +37,12 @@
         </option>
       </select>
 
-      <ul class="list-group" v-if="filterSelected==='All'" >
+      <ul v-if="filterSelected==='All'" class="list-group">
         <li v-for="data in textResults" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
       </ul>
 
-      
-      <ul class="list-group" v-else >
+
+      <ul v-else class="list-group">
         <li v-for="data in textFilterResults" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
       </ul>
       <br><br>
@@ -85,8 +85,14 @@ export default {
       var self = this
       this.textFilterResults = this.textResults.filter(function(data) {
           return data.category === self.filterSelected
+          
       })
+
+      
     },
+  },
+  created() {
+    
   }
 }
 </script>
