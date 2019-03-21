@@ -8,8 +8,8 @@
 
 ## 1) data-binding
 ## 2) nexttick
-* nextTick은 DOM 업데이트가 된 후에 콜백으로 선언된 함수가 실행하도록 돕는 메소드
-* dom이 그려지기 전의 시점에서도 에러 없이 dom을 핸들링할 수 있다. 
+* **nextTick**은 **DOM 업데이트가 된 후**에 콜백으로 선언된 함수가 **실행**하도록 돕는 메소드
+* **dom이 그려지기 전의 시점**에서도 에러 없이 **dom을 핸들링**할 수 있다. 
 * 공식 API문서 : https://kr.vuejs.org/v2/api/#Vue-nextTick
 * https://iam-song.tistory.com/48
 * http://vuejs.kr/jekyll/update/2017/01/19/vuejs-nexttick-example/
