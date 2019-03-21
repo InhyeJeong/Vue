@@ -39,19 +39,19 @@
 
       <select class="browser-default custom-select"
               v-model="filterSelected"
-              @change="filterCategory">
+              @change="filterCategory()">
         <option selected >Open this select menu</option>
         <option v-for="data in selectLists"
                 :key="data">{{data.category}}
         </option>
       </select>
       <ul class="list-group" >
-        <li v-for="data in filterCategory(filterSelected)" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
+        <li v-for="data in textFilterResults" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
       </ul>
       <br><br>
       
       
-      <p>{{textResults}}</p>
+      <p>{{textFilterResults}}</p>
       {{$data}}
 
     </div>
@@ -69,6 +69,7 @@ export default {
         {category:'가족'}
       ],
       textResults:[],
+      textFilterResults:[],
       userInput: '',
       selected: '',
       filterSelected: ''
@@ -82,9 +83,10 @@ export default {
       })
       this.userInput = '';
     },
-    filterCategory: function(category) {
-      return  this.textResults.filter(function(data) {
-        return data.category === category
+    filterCategory: function() {
+      var self = this
+      this.textFilterResults =  this.textResults.filter(function(data) {
+        return data.category === self.filterSelected
       })
     },
   }
