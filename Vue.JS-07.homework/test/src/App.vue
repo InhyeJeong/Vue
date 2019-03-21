@@ -28,27 +28,25 @@
       <!--result-->
       <h1 class="title">Result</h1>
       
-      <ul class="list-group" >
-        <li v-for="data in textResults" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
-      </ul>
-      
-      <br><hr>
-      <!--filter-->
-      <h1 class="title">Filter</h1>
-      <br>
-
       <select class="browser-default custom-select"
-              v-model="filterSelected"
-              @change="filterCategory()">
-        <option selected >Open this select menu</option>
+            v-model="filterSelected"
+            @change="filterCategory()">
+        <option selected >All</option>
         <option v-for="data in selectLists"
-                :key="data">{{data.category}}
+              :key="data">{{data.category}}
         </option>
       </select>
-      <ul class="list-group" >
+
+      <ul class="list-group" v-if="filterSelected==='All'" >
+        <li v-for="data in textResults" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
+      </ul>
+
+      
+      <ul class="list-group" v-else >
         <li v-for="data in textFilterResults" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
       </ul>
       <br><br>
+      
       
       
       <p>{{textFilterResults}}</p>
@@ -85,8 +83,8 @@ export default {
     },
     filterCategory: function() {
       var self = this
-      this.textFilterResults =  this.textResults.filter(function(data) {
-        return data.category === self.filterSelected
+      this.textFilterResults = this.textResults.filter(function(data) {
+          return data.category === self.filterSelected
       })
     },
   }
