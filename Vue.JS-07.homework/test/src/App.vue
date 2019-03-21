@@ -24,28 +24,36 @@
       <button type="submit" class="btn btn-light-blue" @click="onClick">Submit</button>
       <br><br>
       <hr>
+
+      <!--result-->
+      <h1 class="title">Result</h1>
+      
+      <ul class="list-group" >
+        <li v-for="data in textResults" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
+      </ul>
+      
+      <br><hr>
       <!--filter-->
       <h1 class="title">Filter</h1>
       <br>
 
       <select class="browser-default custom-select"
-              v-model="textResults"
+              v-model="filterSelected"
               @change="filterCategory">
         <option selected >Open this select menu</option>
         <option v-for="data in selectLists"
                 :key="data">{{data.category}}
         </option>
       </select>
-      
-      <br><br>
-      <!--result-->
-      <h1 class="title">Result</h1>
-      
-      <ul class="list-group">
-        <li v-for="data in textResults" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
+      <ul class="list-group" >
+        <li v-for="data in filterCategory(filterSelected)" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
       </ul>
-
+      <br><br>
+      
+      
       <p>{{textResults}}</p>
+      {{$data}}
+
     </div>
   </div>
 </template>
@@ -63,7 +71,7 @@ export default {
       textResults:[],
       userInput: '',
       selected: '',
-      selectedResults:''
+      filterSelected: ''
     }
   },
   methods: {
@@ -75,13 +83,10 @@ export default {
       this.userInput = '';
     },
     filterCategory: function(category) {
-      this.textResults.filter(function(data) {
+      return  this.textResults.filter(function(data) {
         return data.category === category
       })
     },
-    selectedResult: function () {
-
-    }
   }
 }
 </script>
