@@ -1,58 +1,46 @@
 <template>
   <div id="app">
     <div class="container">
-
-
       <h1 class="title">Select</h1>
-
       <!--select-->
       <select class="browser-default custom-select" v-model="selected">
-        <option selected disabled  >Open this select menu</option>
-        <option v-for="data in selectLists"
-                :key="data">{{data.category}}
+        <option value="" selected disabled>Open this select menu</option>
+        <option v-for="data in categoryLists"
+                :key="data.index">{{data.category}}
         </option>
       </select>
-      <br><br>
 
       <!--textarea-->
       <div class="form-group shadow-textarea">
-        <label for="exampleFormControlTextarea6" class="title">TextArea</label>
-        <textarea v-model="userInput" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..."></textarea>
+        <label class="title">TextArea</label>
+        <textarea v-model="userInput" class="form-control z-depth-1" rows="3" placeholder="Write something here..."></textarea>
       </div>
-
       <!--btn-->
       <button type="submit" class="btn btn-light-blue" @click="onClick">Submit</button>
-      <br><br>
       <hr>
-
       <!--result-->
-      <h1 class="title">Result</h1>
+      <h1 class="title-result">Result</h1>
       
       <select class="browser-default custom-select"
-            v-model="filterSelected"
-            @change="filterCategory()">
-        <option selected >All</option>
-        <option v-for="data in selectLists"
-              :key="data">{{data.category}}
+              v-model="filterSelected"
+              @change="filterCategory()">
+        <option selected>All</option>
+        <option v-for="data in categoryLists"
+                :key="data.index"
+                :value="data.category">{{data.category}}
         </option>
       </select>
 
       <ul v-if="filterSelected==='All'" class="list-group">
-        <li v-for="data in textResults" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
+        <li v-for="data in mailBox" :key="data.index" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
       </ul>
-
-
       <ul v-else class="list-group">
-        <li v-for="data in textFilterResults" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
+        <li v-for="data in filteredMailBox" :key="data.index" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
       </ul>
-      <div id="dv" ref="dv"></div>
-      <br><br>
-      
       
       <!--console-->
-      <p>{{textFilterResults}}</p>
+      <p>{{filteredMailBox}}</p>
       {{$data}}
-
     </div>
   </div>
 </template>
@@ -62,13 +50,13 @@ export default {
   name: 'app',
   data() {
     return {
-      selectLists:[
-        {category:'동료'},
-        {category:'친구'},
-        {category:'가족'}
+      categoryLists:[
+        {category:'동료', index:1},
+        {category:'친구', index:2},
+        {category:'가족', index:3}
       ],
-      textResults:[],
-      textFilterResults:[],
+      mailBox:[],
+      filteredMailBox:[],
       userInput: '',
       selected: '',
       filterSelected: ''
@@ -76,21 +64,25 @@ export default {
   },
   methods: {
     onClick: function() {
-      this.textResults.push({
+      this.mailBox.unshift({
         label : this.userInput,
         category : this.selected
       })
       this.userInput = '';
-      filterCategory
     },
     filterCategory: function() {
       var self = this
-      self.$nextTick(()=> {
-        this.textFilterResults = this.textResults.filter(function(data) {
-            return data.category === self.filterSelected
-        })
+      this.filteredMailBox = this.mailBox.filter(function(data) {
+          return data.category === self.filterSelected
       })
-    },
+    }
+    // validate() {
+    //   if(this.userInput.length <=0) {
+    //     alert('내용을 입력하세요')
+    //   } else if (this.selected <= 0) {
+    //     alert('카테고리를 선택하세요')
+    //   }
+    // }
   }
 }
 </script>
@@ -104,7 +96,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-
 .shadow-textarea textarea.form-control::placeholder {
     font-weight: 300;
 }
@@ -113,9 +104,14 @@ export default {
 }
 .title { 
   font-weight: bold;
-  font-size: 30px
+  font-size: 30px;
+  padding-top: 20px;
 }
-
+.title-result { 
+  font-weight: bold;
+  font-size: 30px;
+  padding-top: 50px;
+}
 .btn {
   float: right;
 }
