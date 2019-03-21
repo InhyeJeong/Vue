@@ -37,7 +37,8 @@ filterCategory: function() {
 :
 ```
 ## 4) v-if / v-else
-* **textResults** **textFilterResults**
+* v-if : **textResults**
+* v-else : **textFilterResults**
 ```vue
 <ul v-if="filterSelected==='All'" class="list-group">
   <li v-for="data in textResults" :key="data" class="list-group-item">내용 : {{data.label}} | 카테고리 : {{data.category}}</li>
