@@ -11,6 +11,7 @@
 * http://vuejs.kr/jekyll/update/2017/01/19/vuejs-nexttick-example/
 ## 3) filter
 * 반환하는 새 배열을 변수(**textFilterResults**)로 받기
+
 ```vue
 :
 data() {
@@ -36,6 +37,7 @@ filterCategory: function() {
  }
 :
 ```
+
 ## 4) v-if / v-else
 * v-if : **textResults**
 * v-else : **textFilterResults**
