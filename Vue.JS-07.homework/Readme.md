@@ -12,7 +12,7 @@
 ## 3) filter
 * 반환하는 새 배열을 변수(**textFilterResults**)로 받기
 
-```vue
+```javascript
 :
 data() {
     return {
