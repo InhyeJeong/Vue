@@ -81,7 +81,7 @@ export default {
         category : this.selected
       })
       this.userInput = '';
-      filterCategory()
+      filterCategory
     },
     filterCategory: function() {
       var self = this
