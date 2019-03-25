@@ -6,7 +6,9 @@ new Vue({
         //  입력 data를 받아서 저장
         query: '',
         searchResult: [],
-        submitted: false
+        submitted: false,
+        tabs: ['추천 검색어', '최근 검색어'],
+        selectedTab: '추천검색어'
     },
     methods: {
         onSubmit: function(e) {
