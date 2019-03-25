@@ -2,23 +2,18 @@
   <div id="app">
     <div class="container">
       <h1 class="title">Select</h1>
-      <!--select-->
       <select class="browser-default custom-select" v-model="selected">
         <option value="" selected disabled>Open this select menu</option>
         <option v-for="data in categoryLists"
                 :key="data.index">{{data.category}}
         </option>
       </select>
-
-      <!--textarea-->
       <div class="form-group shadow-textarea">
         <label class="title">TextArea</label>
         <textarea v-model="userInput" class="form-control z-depth-1" rows="3" placeholder="Write something here..."></textarea>
       </div>
-      <!--btn-->
       <button type="submit" class="btn btn-light-blue" @click="onSubmit()">Submit</button>
       <hr>
-      <!--result-->
       <h1 class="title-result">Result</h1>
       
       <select class="browser-default custom-select"
