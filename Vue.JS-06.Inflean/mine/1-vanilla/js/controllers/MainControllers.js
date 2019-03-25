@@ -44,6 +44,7 @@ export default {
             this.fetchSearchKeyword()
         } else {
             this.fetchSearchHistory()
+            KeywordView.hide()
         }
         ResultView.hide()
     },
@@ -63,6 +64,7 @@ export default {
     
     search(query) {
         FormView.setValue(query)
+        HistoryModel.add(query)
         console.log(tag, 'search()', query);
         //  search api
         SearchModel.list(query).then(data => {
@@ -87,11 +89,13 @@ export default {
         //  탭뷰와 키워드 뷰를 숨겨야함
         TabView.hide()
         KeywordView.hide()
+        HistoryView.hide()
         ResultView.render(data)
     },
 
     onChangeTab(tabName) {
-        debugger
+        this.selectedTab = tabName
+        this.renderView()
     },
 
     onClickKeyword(keyword) {
