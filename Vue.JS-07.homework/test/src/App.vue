@@ -16,7 +16,7 @@
         <textarea v-model="userInput" class="form-control z-depth-1" rows="3" placeholder="Write something here..."></textarea>
       </div>
       <!--btn-->
-      <button type="submit" class="btn btn-light-blue" @click="onClick">Submit</button>
+      <button type="submit" class="btn btn-light-blue" @click="onSubmit()">Submit</button>
       <hr>
       <!--result-->
       <h1 class="title-result">Result</h1>
@@ -24,7 +24,7 @@
       <select class="browser-default custom-select"
               v-model="filterSelected"
               @change="filterCategory()">
-        <option selected>All</option>
+        <option selected >All</option>
         <option v-for="data in categoryLists"
                 :key="data.index"
                 :value="data.category">{{data.category}}
@@ -59,30 +59,30 @@ export default {
       filteredMailBox:[],
       userInput: '',
       selected: '',
-      filterSelected: ''
+      filterSelected: 'All'
     }
   },
   methods: {
-    onClick: function() {
-      this.mailBox.unshift({
+    filterCategory: function() {
+      var self = this
+      this.filteredMailBox = this.mailBox.filter( data => {
+          return data.category === self.filterSelected
+      })
+    },
+    onSubmit: function() {
+      //  validataion
+      if(this.userInput.length === 0) {
+        alert('내용을 입력하세요')
+      } else if (this.selected === '') {
+        alert('카테고리를 선택하세요')
+      } else if (this.userInput.length > 0 && this.selected !== 0){
+        this.mailBox.unshift({
         label : this.userInput,
         category : this.selected
       })
       this.userInput = '';
-    },
-    filterCategory: function() {
-      var self = this
-      this.filteredMailBox = this.mailBox.filter(function(data) {
-          return data.category === self.filterSelected
-      })
+      }
     }
-    // validate() {
-    //   if(this.userInput.length <=0) {
-    //     alert('내용을 입력하세요')
-    //   } else if (this.selected <= 0) {
-    //     alert('카테고리를 선택하세요')
-    //   }
-    // }
   }
 }
 </script>
