@@ -41,4 +41,10 @@ FormView.onClickReset = function () {
     this.emit('@reset')
     this.showResetBtn(false)    //  리셋 버튼 숨김
 }
+
+//  입력한 값 인풋에서 유지
+FormView.setValue = function (value = '') {
+    this.inputEl.value = value;
+    this.showResetBtn(this.inputEl.value.length)
+}
 export default FormView

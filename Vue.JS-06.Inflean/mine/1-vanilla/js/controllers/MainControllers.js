@@ -33,10 +33,11 @@ export default {
         console.log(tag, 'renderView()')
         
         TabView.setActiveTab(this.selectedTab)
+        
         if(this.selectedTab === '추천 검색어') {
             this.fetchSearchKeyword()
         } else {
-
+            debugger
         }
         ResultView.hide()
     },
@@ -49,6 +50,7 @@ export default {
     },
     
     search(query) {
+        FormView.setValue(query)
         console.log(tag, 'search()', query);
         //  search api
         SearchModel.list(query).then(data => {
@@ -66,7 +68,7 @@ export default {
     onResetForm() {
         console.log(tag, 'onResetForm()')
         //  검색결과 숨김
-        ResultView.hide()
+        this.renderView()
     },
 
     onSearchResult(data) {

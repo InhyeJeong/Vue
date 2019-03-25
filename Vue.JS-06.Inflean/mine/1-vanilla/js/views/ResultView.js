@@ -23,6 +23,7 @@ ResultView.getSearchResultsHtml = function(data) {
         html += this.getSearchItemHtml(item)
         return html
     }, '<ul>') + '</ul>'
+    
 }
 
 ResultView.getSearchItemHtml = function (item) {

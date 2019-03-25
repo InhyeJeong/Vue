@@ -39,6 +39,7 @@ KeywordView.bindClickEvent = function() {
 KeywordView.onClickKeyword = function (e) {
     const {keyword} = e.currentTarget.dataset
     this.emit('@click', {keyword})
+    //  검색어가 검색창에 남아있어야함
 }
 
 export default KeywordView
