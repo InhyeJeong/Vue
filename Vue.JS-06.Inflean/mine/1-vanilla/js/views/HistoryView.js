@@ -2,7 +2,7 @@ import KeywordView from './KeywordView.js'
 
 const tag = '[HistoryView]'
 
-const HistoryView= Object.create(KeywordView)
+const HistoryView = Object.create(KeywordView)
 
 HistoryView.messages.NO_KEYWORDS = '검색 이력이 없습니다.'
 
@@ -10,6 +10,7 @@ HistoryView.render = function(data = []) {
     console.log(tag, 'render()', data);
     this.el.innerHTML = data.length ? this.getKeywordsHtml(data) : this.message.NO_KEYWORDS
     this.show()
+    return this
 }
 
 HistoryView.getKeywordsHtml = function (data) {
@@ -21,6 +22,17 @@ HistoryView.getKeywordsHtml = function (data) {
             </li>`
         return html
     }, '<ul class="list">') + '</ul>'
+}
+HistoryView.bindRemoveBtn = function () {
+    Array.from(this.el.querySelectorAll('button.btn-remove')).forEach(btn => {
+        btn.addEventListener('click', e => {
+            e.stopPropagation()
+            this.onRemove(btn.parentElement.dataset.keyword)
+        })
+    })
+}
+HistoryView.onRemove = function (keyword) {
+    this.emit('@remove', { keyword })
 }
 
 export default HistoryView

@@ -26,8 +26,9 @@ export default {
         
         HistoryView.setup(document.querySelector('#search-history'))
             .on('@click', e => this.onClickHistory(e.detail.keyword)) 
-        
-            ResultView.setup(document.querySelector('#search-result'))
+            .on('@remove', e => this.onRemoveHistory(e.detail.keyword))
+
+        ResultView.setup(document.querySelector('#search-result'))
 
         this.selectedTab = '최근 검색어'
         this.renderView()
@@ -42,6 +43,7 @@ export default {
 
         if(this.selectedTab === '추천 검색어') {
             this.fetchSearchKeyword()
+            HistoryView.hide()
         } else {
             this.fetchSearchHistory()
             KeywordView.hide()
@@ -58,7 +60,9 @@ export default {
 
     fetchSearchHistory() {
         HistoryModel.list().then(data => {
-            HistoryView.render(data)
+            //  render함수가 호출되면 DOM생성 -> 이벤트를 바인딩 가능
+            //  render함수를 체이닝하려면 this를 리턴해야함 KeywordView.js의 render함수가 this리턴함
+            HistoryView.render(data).bindRemoveBtn()
         })
     },
     
@@ -105,5 +109,12 @@ export default {
 
     onClickHistory(keyword) {
         this.search(keyword)
+    },
+
+    onRemoveHistory(keyword) {
+        //  실제 데이터를 삭제하는 것은 컨트롤러가 아니라 모델임 !
+        HistoryModel.remove(keyword)
+        //  지운 후에 다시 화면을 그려줌
+        this.renderView()
     }
 }
