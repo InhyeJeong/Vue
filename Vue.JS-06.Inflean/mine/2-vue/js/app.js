@@ -26,9 +26,10 @@ new Vue({
         },
         resetForm: function() {
             //  여기에서 this는 Vue instance
-            this.query = '';
+            this.query = ''
             //  todo 검색결과를 숨기는 ...
-
+            this.submitted = false
+            this.searchResult = []
         },
         
     },
