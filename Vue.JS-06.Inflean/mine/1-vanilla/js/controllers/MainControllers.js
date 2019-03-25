@@ -30,7 +30,7 @@ export default {
 
         ResultView.setup(document.querySelector('#search-result'))
 
-        this.selectedTab = '최근 검색어'
+        this.selectedTab = '추천 검색어'
         this.renderView()
         
     },
@@ -68,7 +68,7 @@ export default {
     
     search(query) {
         FormView.setValue(query)
-        HistoryModel.add(query)
+        HistoryModel.add(query) //  검색이력 남기기
         console.log(tag, 'search()', query);
         //  search api
         SearchModel.list(query).then(data => {
