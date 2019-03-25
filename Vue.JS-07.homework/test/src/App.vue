@@ -73,9 +73,9 @@ export default {
       //  validataion
       if(this.userInput.length === 0) {
         alert('내용을 입력하세요')
-      } else if (this.selected === '') {
+      } else if (this.selected.length === 0) {
         alert('카테고리를 선택하세요')
-      } else if (this.userInput.length > 0 && this.selected !== 0){
+      } else if (this.userInput.length > 0 && this.selected.length !== 0){
         this.mailBox.unshift({
         label : this.userInput,
         category : this.selected
