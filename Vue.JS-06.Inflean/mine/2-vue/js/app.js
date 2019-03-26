@@ -29,11 +29,14 @@ new Vue({
         onReset: function(e) {
             this.resetForm()
         },
+        //  검색될때마다 호출됨
         search: function () {
             SearchModel.list().then(data => {
                 this.submitted = true
                 this.searchResult = data
             })
+            HistoryModel.add(this.query)
+            this.fetchHistory()
         },
         resetForm: function() {
             //  여기에서 this는 Vue instance
@@ -58,6 +61,10 @@ new Vue({
             HistoryModel.list().then(data => {
                 this.history = data
             })
+        },
+        onclickRemoveHistory: function (keyword) {
+            HistoryModel.remove(keyword)
+            this.fetchHistory()
         }
         
     },
