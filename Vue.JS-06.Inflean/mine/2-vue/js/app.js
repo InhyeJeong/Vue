@@ -1,4 +1,5 @@
 import SearchModel from './models/SearchModel.js'
+import KeyWordModel from './models/KeyWordModel.js'
 
 new Vue({
     el: '#app',
@@ -6,9 +7,14 @@ new Vue({
         //  입력 data를 받아서 저장
         query: '',
         searchResult: [],
+        keywords: [],
         submitted: false,
         tabs: ['추천 검색어', '최근 검색어'],
-        selectedTab: '추천검색어'
+        selectedTab: '',
+    },
+    created() {
+        this.selectedTab = this.tabs[0],
+        this.fetchKeyword()
     },
     methods: {
         onSubmit: function(e) {
@@ -33,6 +39,18 @@ new Vue({
             this.submitted = false
             this.searchResult = []
         },
+        onClickTab: function(tab) {
+            this.selectedTab = tab
+        },
+        onClickKeyword: function (keyword) {
+            this.query = keyword
+            this.search()
+        },
+        fetchKeyword: function () {
+            KeyWordModel.list().then(data => {
+                this.keywords = data
+            })
+        }
         
     },
 })
