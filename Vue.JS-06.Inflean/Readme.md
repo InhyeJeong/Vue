@@ -28,7 +28,12 @@ lights-server, JavaScript, VueJS, MVC -> MVVM pattern
 
 ## 단일 컴포넌트
 ### 1) cmd
+
 **npm install -g vue-cli**
+
 **vue**
+
 **vue list**
+
 **vue init webpack-simple**
+
