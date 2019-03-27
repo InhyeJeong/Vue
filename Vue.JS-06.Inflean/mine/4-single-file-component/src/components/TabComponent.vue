@@ -1,9 +1,11 @@
 <template>
   <ul class="tabs">
-      <li v-for="(tab, index) in tabs" v-bind:key="index" v-bind:class="{active: tab === selectedTab}"
-          v-on:click="onClickTab(tab)">
-          {{tab}}
-      </li>
+    <li v-for="(tab, index) in tabs"
+        v-bind:key="index"
+        v-bind:class="{active: tab === selectedTab}"
+        v-on:click="onClickTab(tab)">
+        {{tab}}
+    </li>
   </ul>
 </template>
 
