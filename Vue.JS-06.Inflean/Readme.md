@@ -39,3 +39,4 @@ lights-server, JavaScript, VueJS, MVC -> MVVM pattern
 
 **npm install**
 
+**npm run dev**
