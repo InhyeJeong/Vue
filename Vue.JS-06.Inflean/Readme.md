@@ -37,3 +37,5 @@ lights-server, JavaScript, VueJS, MVC -> MVVM pattern
 
 **vue init webpack-simple**
 
+**npm install**
+
