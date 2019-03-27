@@ -1,27 +1,24 @@
 <template>
-  <div class="container">
+  <div>
     <header>
       <h2 class="container">검색</h2>
     </header>
-
     <div class="container">
       <search-form v-bind:value="query" v-on:@submit="onSubmit"
-      v-on:@reset="onReset"></search-form>
+        v-on:@reset="onReset"></search-form>
 
       <div class="content">
         <div v-if="submitted">
-            <search-result v-bind:data="searchResult" v-bind:query="query"></search-result>
+          <search-result v-bind:data="searchResult" v-bind:query="query"></search-result>
         </div>
         <div v-else>
           <tabs v-bind:tabs="tabs" v-bind:selected-tab="selectedTab" v-on:@change="onClickTab"></tabs>
-
           <div v-if="selectedTab === tabs[0]">
-            <list type="keywords" v-bind:data="keywords" v-on:@click="onClickKeyword"></list>
+            <list v-bind:data="keywords" type="keywords" v-on:@click="onClickKeyword"></list>
           </div>
           <div v-else>
-              <list v-bind:data="history" type="history"
-                      v-on:@click="onClickKeyword"
-                      v-on:@remove="onClickRemoveHistory"></list>
+            <list v-bind:data="history" type="history" v-on:@click="onClickKeyword"
+              v-on:@remove="onClickRemoveHistory"></list>
           </div>
         </div>
       </div>
@@ -30,85 +27,80 @@
 </template>
 
 <script>
-import SearchModel from './models/SearchModel.js'
-import KeyWordModel from './models/KeyWordModel.js'
 import HistoryModel from './models/HistoryModel.js'
-
+import SearchModel from './models/SearchModel.js'
+import KeywordModel from './models/KeywordModel.js'
 import FormComponent from './components/FormComponent.vue'
 import ResultComponent from './components/ResultComponent.vue'
 import ListComponent from './components/ListComponent.vue'
 import TabComponent from './components/TabComponent.vue'
-
 export default {
   name: 'app',
   data () {
     return {
       query: '',
-      searchResult: [],
-      keywords: [],
-      history: [],
       submitted: false,
       tabs: ['추천 검색어', '최근 검색어'],
       selectedTab: '',
+      keywords: [],
+      history: [],
+      searchResult: []
     }
   },
   components: {
-    'search-form' : FormComponent,
-    'search-result' : ResultComponent,
-    'list' : ListComponent,
-    'tabs' : TabComponent
+    'search-form': FormComponent,
+    'search-result': ResultComponent,
+    'list': ListComponent,
+    'tabs': TabComponent
   },
   created() {
-    this.selectedTab = this.tabs[0],
+    this.selectedTab = this.tabs[0]
     this.fetchKeyword()
     this.fetchHistory()
   },
   methods: {
-    onSubmit: function(query) {
-            this.query = query
-            this.search()
+    onSubmit(query) {
+      this.query = query
+      this.search()
     },
-    onReset: function(e) {
-        this.resetForm()
+    onReset(e) {
+      this.resetForm()
     },
-    //  검색될때마다 호출됨
-    search: function () {
-        SearchModel.list().then(data => {
-            this.submitted = true
-            this.searchResult = data
-        })
-        HistoryModel.add(this.query)
-        this.fetchHistory()
+    onClickTab(tab) {
+      this.selectedTab = tab
     },
-    resetForm: function() {
-        //  여기에서 this는 Vue instance
-        this.query = ''
-        //  todo 검색결과를 숨기는 ...
-        this.submitted = false
-        this.searchResult = []
+    onClickKeyword(keyword) {
+      this.query = keyword;
+      this.search()
     },
-    onClickTab: function(tab) {
-        this.selectedTab = tab
+    onClickRemoveHistory(keyword) {
+      HistoryModel.remove(keyword)
+      this.fetchHistory()
     },
-    onClickKeyword: function (keyword) {
-        this.query = keyword
-        this.search()
+    fetchKeyword() {
+      KeywordModel.list().then(data => {
+        this.keywords = data
+      })
     },
-    fetchKeyword: function () {
-        KeyWordModel.list().then(data => {
-            this.keywords = data
-        })
+    fetchHistory() {
+      HistoryModel.list().then(data => {
+        this.history = data
+      })
     },
-    fetchHistory: function () {
-        HistoryModel.list().then(data => {
-            this.history = data
-        })
+    search() {
+      SearchModel.list().then(data => {
+        this.submitted = true
+        this.searchResult = data
+      })
+      HistoryModel.add(this.query)
+      this.fetchHistory()
     },
-    onclickRemoveHistory: function (keyword) {
-        HistoryModel.remove(keyword)
-        this.fetchHistory()
+    resetForm() {
+      this.query = ''
+      this.submitted = false
+      this.searchResult = []
     }
-  },
+  }
 }
 </script>
 
