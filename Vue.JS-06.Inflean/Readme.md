@@ -71,6 +71,7 @@ new Vue({
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   :
 ```
+#### (2) single file component
 
 * [FormComponent.vue](./mine/4-single-file-component/src/components/FormComponent.vue)
 * [ListComponent.vue](./mine/4-single-file-component/src/components/ListComponent.vue)
