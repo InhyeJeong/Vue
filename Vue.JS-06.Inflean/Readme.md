@@ -72,4 +72,6 @@ new Vue({
   :
 ```
 
+* [FormComponent.vue](./mine/4-single-file-component/src/components/FormComponent.vue)
+
 
