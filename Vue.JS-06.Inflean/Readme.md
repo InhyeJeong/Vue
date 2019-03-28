@@ -51,6 +51,18 @@ lights-server, JavaScript, VueJS, MVC -> MVVM pattern
 ### 2) 싱글 파일 컴포넌트
 #### (1) 기본 설정
 * main.js : 어플리케이션 진입점
+
+```javascript
+import Vue from 'vue'
+import App from './App.vue'
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
+
+```
+
 * App.vue : 메인 어플리케이션 (template/script/style)
 * index.html : style link 연결, viewport 설정
 
@@ -59,3 +71,5 @@ lights-server, JavaScript, VueJS, MVC -> MVVM pattern
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   :
 ```
+
+
