@@ -26,12 +26,17 @@ lights-server, JavaScript, VueJS, MVC -> MVVM pattern
 ### 4) [Controller](./mine/1-vanilla/js/controllers)
 * MainControllers.js
 
-## 단일 컴포넌트
-### 1) cmd
+## 단일 컴포넌트(.vue)
+* 가독성과 유지보수의 편리함
+### 1) cmd 설치방법
 
 **npm install -g vue-cli**
 
 **vue**
+* init
+* list
+* build
+* help
 
 **vue list**
 
@@ -40,3 +45,5 @@ lights-server, JavaScript, VueJS, MVC -> MVVM pattern
 **npm install**
 
 **npm run dev**
+
+### 2) 
