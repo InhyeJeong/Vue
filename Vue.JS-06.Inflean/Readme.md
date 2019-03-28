@@ -6,7 +6,7 @@
 lights-server, JavaScript, VueJS, MVC -> MVVM pattern
 ```
 
-## 요구사항 분석
+## 1. 요구사항 분석
 <p align="center">
 <img src="./images/first.png" width="600" >	
 </p>
@@ -26,10 +26,10 @@ lights-server, JavaScript, VueJS, MVC -> MVVM pattern
 ### 4) [Controller](./mine/1-vanilla/js/controllers)
 * MainControllers.js
 
-## 단일 컴포넌트(.vue)
+## 2. 단일 컴포넌트(.vue)
 * 가독성과 유지보수의 편리함
-### 1) cmd 설치방법
-
+### 1) 설치방법
+#### (1) cmd
 **npm install -g vue-cli**
 
 **vue**
@@ -43,7 +43,19 @@ lights-server, JavaScript, VueJS, MVC -> MVVM pattern
 **vue init webpack-simple**
 
 **npm install**
+* 개발서버를 띄우려면 설치해야함
 
 **npm run dev**
+* 브라우저에 창 뜬 것 확인
 
-### 2) 
+### 2) 싱글 파일 컴포넌트
+#### (1) 기본 설정
+* main.js : 어플리케이션 진입점
+* App.vue : 메인 어플리케이션 (template/script/style)
+* index.html : style link 연결, viewport 설정
+
+```html
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  :
+```
