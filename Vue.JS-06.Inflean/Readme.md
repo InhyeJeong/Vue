@@ -73,5 +73,8 @@ new Vue({
 ```
 
 * [FormComponent.vue](./mine/4-single-file-component/src/components/FormComponent.vue)
+* [ListComponent.vue](./mine/4-single-file-component/src/components/ListComponent.vue)
+* [ResultComponent.vue](./mine/4-single-file-component/src/components/ResultComponent.vue)
+* [TabComponent.vue](./mine/4-single-file-component/src/components/TabComponent.vue)
 
 
