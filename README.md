@@ -216,13 +216,13 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 ### 1) $on(event)를 이용해 이벤트 **청취**
 
 ### 2) $emit(event)를 이용해 이벤트 발생
-*  자식component에서 부모 component로 변경사항 **전달**
-
+*  자식 component > 부모 component로 변경사항 **전달**
+* 부모 > 자식 : **props**
 ```vue
 <script>
   Vue.component('chariot', {
       template: '#chariot-template',
-      //  부모와 자식 컴포넌트 통신
+      //  부모 > 자식 컴포넌트 통신
       props:['chariot'],
       methods: {
           rideChariot: function (chariot) {
@@ -252,5 +252,6 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 
 ### 5) eventbus
 * 형제 component 통신에서 **가상의 부모 component 역할**
-* eventbus 설명 유튜브 주소 : https://www.youtube.com/watch?v=tlcofmjZJEA&index=8&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG
-* props 설명 유튜브 주소 : https://www.youtube.com/watch?v=7T8F7ZF52lo&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG&index=6
+* eventbus : https://www.youtube.com/watch?v=tlcofmjZJEA&index=8&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG
+* props : https://www.youtube.com/watch?v=L8VLByQLtjc&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG&index=5
+* props의 활용 : https://www.youtube.com/watch?v=7T8F7ZF52lo&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG&index=6
