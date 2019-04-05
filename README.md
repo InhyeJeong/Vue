@@ -216,8 +216,19 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 ### 1) $on(event)를 이용해 이벤트 **청취**
 
 ### 2) $emit(event)를 이용해 이벤트 발생
-*  자식 component > 부모 component로 변경사항 **전달**
+
 * 부모 > 자식 : **props**
+
+<p align="center">
+<img src="./images/props.png" width="1000" >	
+</p>
+
+*  자식 > 부모 변경사항 전달 : **emit**
+
+<p align="center">
+<img src="./images/emit.png" width="1000" >	
+</p>
+
 ```vue
 <script>
   Vue.component('chariot', {
