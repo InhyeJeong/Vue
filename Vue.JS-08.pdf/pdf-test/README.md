@@ -27,3 +27,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## 라이브러리
+
+```
+npm install --save html2canvas jspdf
+```
