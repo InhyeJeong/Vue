@@ -220,13 +220,13 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 * 부모 > 자식 : **props**
 
 <p align="center">
-<img src="./images/props.png" width="1000" >	
+<img src="./images/props.png" width="700" >	
 </p>
 
 *  자식 > 부모 변경사항 전달 : **emit**
 
 <p align="center">
-<img src="./images/emit.png" width="1000" >	
+<img src="./images/emit.png" width="700" >	
 </p>
 
 ```vue
