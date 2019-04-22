@@ -573,6 +573,9 @@ import { mapMutations } from 'vuex'
 ```
 
 ### 5) actions
+<p align="center">
+<img src="./images/vuex.png" width="1000" >	
+</p>
 * 각 컴포넌트에서 dispatch받은 후 mutations으로 commit날림
 * state를 변화시키기위한 business 로직 포함(ex. 비동기 방식으로 서버와 통신)
 * **store.js**
