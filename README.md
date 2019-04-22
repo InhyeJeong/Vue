@@ -278,9 +278,9 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 
 * **state** : Vue 인스턴스의 data라고 생각하면 됨
 * **getters** : computed
-* **mutations** : 변이 (state값을 변화시킴)
-* **actions** : 
-
+* **mutations** : 변이 (state값을 변화시킴) (모든 기능이 **동기**로 동작함)
+* **actions** : **비동기** 로직 처리(mutation을 변화시키는 business 로직)
+-------------------------------------------------------------------------------
 * **store.js** : 저장소
 
 ```javascript
@@ -477,7 +477,7 @@ import { mapState, mapGetters } from 'vuex'
 </script>
 ```
 
-### 3) mutation
+### 4) mutation
 
 * WHY ? 각 컴포넌트에서 동일하게 쓰이면 **코드중복** -> state를 변화시키는 mutation을 각 컴포넌트에서 활용!(**commit**)
 * **store.js**
@@ -565,6 +565,123 @@ import { mapMutations } from 'vuex'
         this.$store.commit('addUsers', userObj)
         //  this.addUsers(userObj) // userObj는 store.js의 payload로 날아감
         //  EventBus.$emit('signUp', userObj)
+        :
+      }
+    }
+:
+</script>
+```
+
+### 5) actions
+* 각 컴포넌트에서 dispatch받은 후 mutations으로 commit날림
+* state를 변화시키기위한 business 로직 포함(ex. 비동기 방식으로 서버와 통신)
+* **store.js**
+
+```javascript
+:
+export default new Vuex.Store({
+  state: {  //  data
+    allUsers:[
+      {userId:'123', password: '1234', name: 'tonz', address: 'Seoul'}
+        :
+    ]
+  },
+  mutations: {
+    addUsers: (state, payload) => {
+      state.allUsers.push(payload)
+    }
+  },
+  actions: {  //  이름 겹쳐도 됨
+    addUsers: context => {
+      //  mutation을 불러오는 방법
+      context.commit('addUsers')
+
+    }
+  }
+})
+```
+
+* commit이 많아지면 위의 방법은 불편
+
+```javascript
+:
+export default new Vuex.Store({
+  state: {  //  data
+    allUsers:[
+      {userId:'123', password: '1234', name: 'tonz', address: 'Seoul'}
+        :
+    ]
+  },
+  mutations: {
+    addUsers: (state, payload) => {
+      state.allUsers.push(payload)
+    }
+  },
+  actions: {  //  이름 겹쳐도 됨
+    addUsers: ({ commit }, payload) => { //  function({commit})과 같은 의미
+    //  context, payload
+    //  { commit }, payload
+    
+    //  이곳에 서버와 통신하는 business로직 나열
+    :
+    :
+
+     commit('addUsers', payload)  //  state를 변화시키는 한 줄!
+    }
+  }
+})
+```
+
+* **SignUp.vue** : actions를 불러오기 **dispatch**
+```vue
+<template>
+  :
+</template>
+
+<script>
+import { mapMutations } from 'vuex'
+
+  export default {
+    :
+    methods: {
+      ...mapMutations(['addUsers']),
+      signUp () {
+        let userObj = {
+          userId : this.userId,
+          :
+        }
+        // this.addUsers(usrObj)
+        this.$store.dispatch('addUsers', userObj)
+        :
+      }
+    }
+:
+</script>
+```
+
+* **SignUp.vue** : mapActions 활용
+```vue
+<template>
+  :
+</template>
+
+<script>
+
+import { mapActions } from 'vuex'
+
+  export default {
+    :
+    methods: {
+      //...mapMutations(['addUsers']),
+      ...mapActions(['addUsers']),
+      signUp () {
+        let userObj = {
+          userId : this.userId,
+          :
+        }
+        // this.addUsers(usrObj)
+        //  this.$store.dispatch('addUsers', userObj)
+        this.addUsers(userObj)
         :
       }
     }
