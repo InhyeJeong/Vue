@@ -348,7 +348,7 @@ new Vue({
 
 ### 2) Getters
 * 복잡한 계산식이 될 때 용이함
-* **store.js** : 저장소
+* **store.js**
 
 ```javascript
 import Vue from 'vue'
@@ -416,8 +416,8 @@ export default new Vuex.Store({
 ```
 
 ### 3) Map Getters
-* getters에서 쓰고 있는 값들을 사용하고자하는 컴포넌트에 간단하게 불러내는 것
-* map getters로 **AllUsers.vue** 와 같은 컴포넌트에서의 접근 : **allUsersCount**
+* getters에서 쓰고 있는 값들을 사용하고자하는 컴포넌트에 **간단하게** 불러내는 것
+* map getters로 **AllUsers.vue** 와 같은 컴포넌트에서의 접근 : **배열**로 받기
 
 ```vue
 <template>
@@ -434,6 +434,7 @@ import { mapGetters } from 'vuex' // vuex에서 미리 설정되어 있으므로
       }
     },
     computed: {
+      //  배열로 받음
       ...mapGetters(['allUsersCount', 'countOfSeoul', 'percentOfSeoul']) // mapGetters에서 불러와야 간단히 사용가능
     },
     mounted () {
@@ -442,6 +443,37 @@ import { mapGetters } from 'vuex' // vuex에서 미리 설정되어 있으므로
       })
     }
   }
+</script>
+```
+
+* **AllUsers.vue** 다른 값으로 받아서 쓸 때 mapGetters를 **객체**로 받기
+* **mapState**
+```vue
+<template>
+  <div>
+    <h1>All Users : ({{ count }})</h1>
+    <h1>Seoul Users : ({{ seouls }}) ({{ percent }}%)</h1>
+  :
+  <v-list-tile
+    v-for="(user, index) in allUsers" //  mapState에서 
+    :key="index"
+    avatar>
+  :
+</template>
+
+<script>
+import { mapState, mapGetters } from 'vuex'
+  export default {
+
+    computed: {
+      ...mapGetters({ //  객체로 받음
+        count: 'allUsersCount',
+        seouls: 'countOfSeoul',
+        percent: 'percentOfSeoul'
+      }),
+      ...mapState(['allUsers'])
+    },
+:
 </script>
 ```
 
