@@ -278,7 +278,7 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 
 * **state** : Vue 인스턴스의 data라고 생각하면 됨
 * **getters** : computed
-* **mutations** : 
+* **mutations** : 변이 (state값을 변화시킴)
 * **actions** : 
 
 * **store.js** : 저장소
@@ -477,3 +477,97 @@ import { mapState, mapGetters } from 'vuex'
 </script>
 ```
 
+### 3) mutation
+
+* WHY ? 각 컴포넌트에서 동일하게 쓰이면 **코드중복** -> state를 변화시키는 mutation을 각 컴포넌트에서 활용!(**commit**)
+* **store.js**
+
+```javascript
+:
+export default new Vuex.Store({
+  state: {  //  data
+    allUsers:[
+      {userId:'123', password: '1234', name: 'tonz', address: 'Seoul'}
+        :
+    ]
+  },
+  mutations: {
+    addUsers: (state, payload) => {
+      state.allUsers.push(payload)
+    }
+  },
+  actions: {
+  }
+})
+```
+
+* **SignUp.vue** : **mapMutations**
+```vue
+<template>
+  :
+</template>
+
+<script>
+import { mapMutations } from 'vuex'
+
+  export default {
+    :
+    computed: {
+      ...mapGetters({ //  객체로 받음
+        count: 'allUsersCount',
+        seouls: 'countOfSeoul',
+        percent: 'percentOfSeoul'
+      }),
+      ...mapState(['allUsers'])
+    },
+    methods: {
+      ...mapMutations(['addUsers']),
+      signUp () {
+        let userObj = {
+          userId : this.userId,
+          :
+        }
+        this.addUsers(userObj) // userObj는 store.js의 payload로 날아감
+        //  EventBus.$emit('signUp', userObj)
+        :
+      }
+    }
+:
+</script>
+```
+
+* **SignUp.vue** : mapMutation이 아닌 **commit('mutation이름', 넘길 payload)으로 불러오기**
+```vue
+<template>
+  :
+</template>
+
+<script>
+//  import { mapMutations } from 'vuex'
+
+  export default {
+    :
+    computed: {
+      //  ...mapGetters({ //  객체로 받음
+        count: 'allUsersCount',
+        seouls: 'countOfSeoul',
+        percent: 'percentOfSeoul'
+      }),
+      ...mapState(['allUsers'])
+    },
+    methods: {
+      ...mapMutations(['addUsers']),
+      signUp () {
+        let userObj = {
+          userId : this.userId,
+          :
+        }
+        this.$store.commit('addUsers', userObj)
+        //  this.addUsers(userObj) // userObj는 store.js의 payload로 날아감
+        //  EventBus.$emit('signUp', userObj)
+        :
+      }
+    }
+:
+</script>
+```
