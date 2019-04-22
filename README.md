@@ -693,3 +693,5 @@ import { mapActions } from 'vuex'
 :
 </script>
 ```
+--------------------------------------------
+* vuex : https://www.youtube.com/playlist?list=PLZzSdj89sCN292abcbI3utND8pA1T1OyB
