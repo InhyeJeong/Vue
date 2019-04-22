@@ -277,12 +277,13 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 ### 1) vue create
 
 * **state** : Vue 인스턴스의 data라고 생각하면 됨
+* **getters** : computed
 * **mutations** : 
 * **actions** : 
 
 * **store.js** : 저장소
 
-```vue
+```javascript
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -304,7 +305,7 @@ export default new Vuex.Store({
 
 * 중앙통제관리소 격인 **main.js** 파일에 Vuex설정해야함(각 컴포넌트에서 import X)
 
-```vue
+```javascript
 :
 
 import store from './store'
@@ -318,8 +319,129 @@ new Vue({
 
 * **AllUsers.vue** 와 같은 컴포넌트에서의 접근 : **$store.state.allUsers**
 ```vue
-<v-list-tile
-  v-for="(user, index) in $store.state.allUsers"
-  :key="index"
-  avatar>
+<template>
+  <div>
+    <h1>All Users ({{ $store.state.allUsers.length }})</h1>
+    :
+  <v-list-tile
+    v-for="(user, index) in $store.state.allUsers"
+    :key="index"
+    avatar>
+  :
+
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+      }
+    },
+    mounted () {
+      EventBus.$on('SignUp'. users => {
+        this.$store.state.allUsers.push(users)
+      })
+    }
+  }
+</script>
 ```
+
+### 2) Getters
+* 복잡한 계산식이 될 때 용이함
+* **store.js** : 저장소
+
+```javascript
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  state: {  //  data
+    allUsers:[
+      {userId:'123', password: '1234', name: 'tonz', address: 'Seoul'}
+        :
+    ]
+  },
+  getters: {  // computed
+    allUsersCount: function(state) {  //  state로 반드시 들어가야함
+      return state.allUsers.length
+    },
+    countOfSeoul: state => {
+      let count = 0
+      state.allUsers.forEach(user => {
+        if(user.address === 'Seoul') count ++
+      })
+      return count
+    },
+    percentOfSeoul: (state, getters) => { //  state로 반드시 받아야 두번째 인자 인식
+      return Math.round(getters.countOfSeoul / getters.allUsersCount * 100)
+    }
+  },
+  mutations: {
+  },
+  actions: {
+  }
+})
+```
+
+* getters로 **AllUsers.vue** 와 같은 컴포넌트에서의 접근 : **$store.getters.allUsersCount**
+
+```vue
+<template>
+  <div>
+    <h1>Seoul Users : ({{ $store.getters.countOfSeoul }}) ({{ $store.getters.percentOfSeoul }}%)</h1>
+  :
+  <v-list-tile
+    v-for="(user, index) in $store.getters.allUsersCount"
+    :key="index"
+    avatar>
+  :
+
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+      }
+    },
+    mounted () {
+      EventBus.$on('SignUp'. users => {
+        this.$store.state.allUsers.push(users)
+      })
+    }
+  }
+</script>
+```
+
+### 3) Map Getters
+* getters에서 쓰고 있는 값들을 사용하고자하는 컴포넌트에 간단하게 불러내는 것
+* map getters로 **AllUsers.vue** 와 같은 컴포넌트에서의 접근 : **allUsersCount**
+
+```vue
+<template>
+  <div>
+    <h1>Seoul Users : ({{ countOfSeoul }}) ({{ percentOfSeoul }}%)</h1>
+  :
+</template>
+
+<script>
+import { mapGetters } from 'vuex' // vuex에서 미리 설정되어 있으므로 vuex에서 임포트
+  export default {
+    data() {
+      return {
+      }
+    },
+    computed: {
+      ...mapGetters(['allUsersCount', 'countOfSeoul', 'percentOfSeoul']) // mapGetters에서 불러와야 간단히 사용가능
+    },
+    mounted () {
+      EventBus.$on('SignUp'. users => {
+        this.$store.state.allUsers.push(users)
+      })
+    }
+  }
+</script>
+```
+
