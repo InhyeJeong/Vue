@@ -266,3 +266,60 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 * eventbus : https://www.youtube.com/watch?v=tlcofmjZJEA&index=8&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG
 * props : https://www.youtube.com/watch?v=L8VLByQLtjc&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG&index=5
 * props의 활용 : https://www.youtube.com/watch?v=7T8F7ZF52lo&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG&index=6
+
+# 8. Vuex
+
+* 여러 컴포넌트 간 통신간에는 **중앙관리체계**가 필요함
+* props, emit, eventbus 대체
+* **vuex란 ?** https://vuex.vuejs.org/kr/
+* vuex에 함수, 상태 저장 -> 다른 컴포넌트에서 자유롭게 접근 가능
+
+### 1) vue create
+
+* **state** : Vue 인스턴스의 data라고 생각하면 됨
+* **mutations** : 
+* **actions** : 
+
+* **store.js** : 저장소
+
+```vue
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  state: {  //  data
+    allUsers:[
+      {userId:'123', password: '1234', name: 'tonz', address: 'Seoul'}
+        :
+    ]
+  },
+  mutations: {
+  },
+  actions: {
+  }
+})
+```
+
+* 중앙통제관리소 격인 **main.js** 파일에 Vuex설정해야함(각 컴포넌트에서 import X)
+
+```vue
+:
+
+import store from './store'
+:
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
+```
+
+* **AllUsers.vue** 와 같은 컴포넌트에서의 접근 : **$store.state.allUsers**
+```vue
+<v-list-tile
+  v-for="(user, index) in $store.state.allUsers"
+  :key="index"
+  avatar>
+```
