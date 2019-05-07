@@ -348,6 +348,7 @@ new Vue({
 
 ### 2) Getters
 * 복잡한 계산식이 될 때 용이함
+* state 자체를 가져오기 위한 getter들
 * **store.js**
 
 ```javascript
@@ -477,9 +478,11 @@ import { mapState, mapGetters } from 'vuex'
 </script>
 ```
 
-### 4) mutation
+### 4) mutations
 
+* store.commit() : mutation 호출
 * WHY ? 각 컴포넌트에서 동일하게 쓰이면 **코드중복** -> state를 변화시키는 mutation을 각 컴포넌트에서 활용!(**commit**)
+* state의 setter 혹은 updater의 역할
 * **store.js**
 
 ```javascript
@@ -578,8 +581,10 @@ import { mapMutations } from 'vuex'
 <img src="./images/vuex.png" width="1000" >	
 </p>
 
+* store.dispatch() : action 호출
 * 각 컴포넌트에서 dispatch받은 후 mutations으로 commit날림
 * state를 변화시키기위한 business 로직 포함(ex. 비동기 방식으로 서버와 통신)
+* 비동기 작업 후 mutation 실행
 * **store.js**
 
 ```javascript
@@ -695,3 +700,63 @@ import { mapActions } from 'vuex'
 ```
 --------------------------------------------
 * vuex : https://www.youtube.com/playlist?list=PLZzSdj89sCN292abcbI3utND8pA1T1OyB
+
+# 9. nextTick
+
+### 1) Vue.js에서 nextTick 사용하기
+
+* **nextTick**으로 감싼뒤 callback을 통해 DOM을 조작하게 되면 Vue.js에서 데이터갱신 후 UI까지 완료한 뒤에 nextTick에 있는 함수를 최종적으로 수행하게 됩니다.
+
+```vue
+created: function() {
+
+    // ...
+
+    this.$nextTick(function() {
+    	var dom = document.getElementById('item-0');
+        dom.style.backgroundColor = 'red';
+    });
+}
+```
+* 출처 : http://vuejs.kr/jekyll/update/2017/01/19/vuejs-nexttick-example/
+* 예제 : https://jsfiddle.net/devjin0617/pgscu4q3/
+
+### 2) Vue.js에서 nextTick 활용하기
+
+* 코드상으로 의도는 select box 에서 pig 를 선택하는 경우 화면에 pig 는 animal 이라고 표현하려고 한다. 혹은 apple 를 선택하면 fruit 로 표기한다. 하지만 놀랍게도(!) 코드는 의도와 반대로 동작한다.
+* **why?**
+* click 이벤트는 v-model 값이 변경되기 전에 호출되고
+* 호출이 끝나고 나서야 v-model 값이 변경되기 때문이다.
+* 다시말해 select box 에 pig 가 선택되어 있는 상태에서 apple 로 변경하려고 할 때 아직 pig 인 상태에서 click 이벤트가 다 끝나게 되고
+* 그 후에 v-model 은 apple 로 변경된다.
+
+#### 1) click 이벤트 호출시작, 끝남 (pig인 상태에서 클릭이벤트 종료)
+#### 2) v-model 값 변경 (이벤트 호출 끝난 이후 apple로 값 변경)
+
+```vue
+<b-form-select v-model="selected" :options="options" @change="Changed"/>
+{{ type }}
+```
+
+```vue
+Changed() {
+    if ( this.selected == "pig" )
+         this.type = "animal";
+    if ( this.selectd == "apple" )
+         this.type = "fruit";
+}
+```
+
+* nextTick
+
+```vue
+Changed() {
+    Vue.nextTick(() =>
+    {
+        if ( this.selected == "pig" )
+             this.type = "animal";
+        if ( this.selectd == "apple" )
+             this.type = "fruit";
+    });
+}
+```
