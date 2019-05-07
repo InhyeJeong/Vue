@@ -723,15 +723,21 @@ created: function() {
 
 ### 2) Vue.js에서 nextTick 활용하기
 
-* 코드상으로 의도는 select box 에서 pig 를 선택하는 경우 화면에 pig 는 animal 이라고 표현하려고 한다. 혹은 apple 를 선택하면 fruit 로 표기한다. 하지만 놀랍게도(!) 코드는 의도와 반대로 동작한다.
-* **why?**
-* click 이벤트는 v-model 값이 변경되기 전에 호출되고
-* 호출이 끝나고 나서야 v-model 값이 변경되기 때문이다.
-* 다시말해 select box 에 pig 가 선택되어 있는 상태에서 apple 로 변경하려고 할 때 아직 pig 인 상태에서 click 이벤트가 다 끝나게 되고
-* 그 후에 v-model 은 apple 로 변경된다.
+```
+코드상으로 의도는 select box 에서 pig 를 선택하는 경우 화면에 pig 는 animal 이라고 표현하려고 한다. 혹은 apple 를 선택하면 fruit 로 표기한다. 하지만 놀랍게도(!) 코드는 의도와 반대로 동작한다.
+```
 
-#### 1) click 이벤트 호출시작, 끝남 (pig인 상태에서 클릭이벤트 종료)
-#### 2) v-model 값 변경 (이벤트 호출 끝난 이후 apple로 값 변경)
+* **why?**
+
+```
+ click 이벤트는 v-model 값이 변경되기 전에 호출되고
+ 호출이 끝나고 나서야 v-model 값이 변경되기 때문이다.
+ 다시말해 select box 에 pig 가 선택되어 있는 상태에서 apple 로 변경하려고 할 때 아직 pig 인 상태에서 click 이벤트가 다 끝나게 되고
+ 그 후에 v-model 은 apple 로 변경된다.
+```
+
+* click 이벤트 호출시작, 끝남 (pig인 상태에서 클릭이벤트 종료)
+* v-model 값 변경 (이벤트 호출 끝난 이후 apple로 값 변경)
 
 ```vue
 <b-form-select v-model="selected" :options="options" @change="Changed"/>
