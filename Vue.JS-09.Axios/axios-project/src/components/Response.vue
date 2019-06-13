@@ -1,5 +1,5 @@
 <template>
-  <div id="response">
+  <div class="response">
     <div v-if="hasResult">
       <div v-for="post in posts" v-bind:key="post.id">
         <h1>{{ post.title }}</h1>
@@ -13,7 +13,6 @@
 <script>
 
 export default {
-  name: 'response',
   data: function () {
     return {
       posts: []
