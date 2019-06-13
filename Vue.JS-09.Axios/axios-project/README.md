@@ -62,3 +62,6 @@ require('es6-promise').polyfill();
 require('es6-promise/auto');
 ```
 
+------------------------------
+* axios : https://github.com/axios/axios
+* axios upgrade guide : https://github.com/axios/axios/blob/master/UPGRADE_GUIDE.md
