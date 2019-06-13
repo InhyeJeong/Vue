@@ -30,8 +30,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 -----------------------------------------------------------------------
 
-### vue-cli 설치
-### axios
+### 1) vue-cli 설치
+### 2) axios
 
 * axios 설치
 
@@ -60,6 +60,7 @@ new Vue({
 * App.vue
 
 ```vue
+<script>
 :
 methods: {
     searchTerm: function () {
@@ -72,9 +73,11 @@ methods: {
     }
   }
 :
+</script>
 ```
 
-### axios & IE : https://github.com/stefanpenner/es6-promise
+### 3) axios & IE : https://github.com/stefanpenner/es6-promise
+
 * es6-promise
 
 ```
