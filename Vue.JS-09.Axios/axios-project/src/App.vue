@@ -12,7 +12,6 @@
       </div>
     </div>
     <button v-else v-on:click="searchTerm">글 불러오기</button>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   </div>
 </template>
 
