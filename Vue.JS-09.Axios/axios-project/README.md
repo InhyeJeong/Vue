@@ -47,7 +47,7 @@ methods: {
 ```
 * response 
 <p align="center">
-<img src="./images/response.png" width="800" >
+<img src="./images/response.png" width="400" >
 </p>
 
 ### 3) axios & IE : https://github.com/stefanpenner/es6-promise
