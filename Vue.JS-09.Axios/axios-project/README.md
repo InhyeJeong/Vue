@@ -1,17 +1,5 @@
 # axios-project
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
------------------------------------------------------------------------
-
 ### 1) vue-cli 설치
 ### 2) axios
 
