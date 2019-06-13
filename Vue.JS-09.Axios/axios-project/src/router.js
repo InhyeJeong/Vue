@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import HelloWorld from './components/HelloWorld.vue'
+import Main from './components/Main.vue'
 import About from './components/About.vue'
 
 Vue.use(Router)
@@ -10,7 +10,7 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: HelloWorld
+        component: Main
     },
     {
         path: '/about',
