@@ -2,8 +2,8 @@
   <div class="response">
     <div v-if="hasResult">
       <div v-for="post in posts" v-bind:key="post.id">
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.body }}</p>
+        <h1>{{ post.categoryCode }}</h1>
+        <p>{{ post.name }}</p>
       </div>
     </div>
     <button v-else v-on:click="searchTerm">글 불러오기</button>
@@ -25,8 +25,17 @@ export default {
   },
   methods: {
     searchTerm: function () {
-      const baseURI = 'https://jsonplaceholder.typicode.com'
-      this.$http.get(`${baseURI}/posts`)
+    //  var apiUrls = apiList.baseUrl + apiMethod.apiUrl + apiMethod.apiQuery
+    var apiUrls = 'https://dev-api.meditlink.com' + '/v1/colLabGroups/labs/_id/products' + ''
+    var accessToken = 'Bearer' + 'dfdfdf'
+    var ajaxOptions = {
+      headers: {
+        'Content-Type': 'text/plain', //  apiMethod.contentType,
+        'x-meditlink-version': '2.1.0' + '', //  meditlinkVersion + apiList.buildVersion
+        'Authorization' : accessToken
+      }
+    }
+      this.$http.get(apiUrls, ajaxOptions)
       .then((response) => {
         console.log(response)
         this.posts = response.data
