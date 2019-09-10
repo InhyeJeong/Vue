@@ -267,9 +267,9 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 
 ### 5) eventbus
 * 형제 component 통신에서 **가상의 부모 component 역할**
-* eventbus : https://www.youtube.com/watch?v=tlcofmjZJEA&index=8&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG
-* props : https://www.youtube.com/watch?v=L8VLByQLtjc&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG&index=5
-* props의 활용 : https://www.youtube.com/watch?v=7T8F7ZF52lo&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG&index=6
+* (eventbus)[https://www.youtube.com/watch?v=tlcofmjZJEA&index=8&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG]
+* (props)[https://www.youtube.com/watch?v=L8VLByQLtjc&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG&index=5]
+* (props의 활용)[https://www.youtube.com/watch?v=7T8F7ZF52lo&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG&index=6]
 
 # 8. Vuex
 
@@ -277,12 +277,13 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 * props, emit, eventbus 대체
 * **vuex란 ?** https://vuex.vuejs.org/kr/
 * vuex에 함수, 상태 저장 -> 다른 컴포넌트에서 자유롭게 접근 가능
-* vuex와 컴포넌트 비교
+* vuex와 컴포넌트 **비교**
 
 <p align="center">
 <img src="./images/compare.png" width="800" >	
 </p>
 
+* vuex 전체 flow
 <p align="center">
 <img src="./images/store.png" width="800" >	
 </p>
@@ -317,7 +318,7 @@ export default new Vuex.Store({
 })
 ```
 
-* 중앙통제관리소 격인 **main.js** 파일에 Vuex설정해야함(각 컴포넌트에서 import X)
+* 중앙통제관리소 격인 **main.js** 파일에 Vuex설정(각 컴포넌트에서 import X)
 
 ```javascript
 :
@@ -362,7 +363,7 @@ new Vue({
 
 ### 2) Getters
 * 복잡한 계산식이 될 때 용이함
-* state 자체를 가져오기 위한 getter들
+* state 자체를 가져오기 위한 getter
 * **store.js**
 
 ```javascript
