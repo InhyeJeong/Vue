@@ -180,7 +180,7 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 
 # 6. LifeCycle
 
-### (1) Creation : 컴포넌트 초기화 (이벤트, 생명주기 메소드 초기화, 메소드 및 데이터 옵션을 버안당하고 반응형으로 설정)
+### (1) Creation : 컴포넌트 초기화 (이벤트, 생명주기 메소드 초기화, 메소드 및 데이터 옵션을 하고 반응형으로 설정)
 * **before create** : data, events 세팅 전
 * **created** : data, events 활성화( template, 가상돔 -> mount, rendering X )
 
