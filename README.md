@@ -273,6 +273,16 @@ _.orderBy(collection, [iteratees=[_.identity]], [orders])
 * props, emit, eventbus 대체
 * **vuex란 ?** https://vuex.vuejs.org/kr/
 * vuex에 함수, 상태 저장 -> 다른 컴포넌트에서 자유롭게 접근 가능
+* vuex와 컴포넌트 비교
+
+<p align="center">
+<img src="./images/compare.png" width="800" >	
+</p>
+
+<p align="center">
+<img src="./images/store.png" width="800" >	
+</p>
+
 
 ### 1) vue create
 
