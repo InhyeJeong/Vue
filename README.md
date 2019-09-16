@@ -1,6 +1,5 @@
-# Vue.Js Study
+# :pushpin: Vue.Js Study
 * Vue.JS를 스터디하는 레파지토리 입니다.
-* 기간 : 19년 1월 22
 
 <br>
 
